@@ -1,0 +1,132 @@
+[INFO ] 2018-01-07 14:04:44.236 [main] DirectBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 14:04:44.239 [main] DirectBidCommand - New bid was created LOT: 1; USER: 1; RESULT: false
+[INFO ] 2018-01-07 14:04:44.241 [main] DirectBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 14:04:44.243 [main] DirectBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 14:04:44.244 [main] DirectBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 14:04:44.268 [main] ReverseBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 14:04:44.271 [main] ReverseBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 14:04:44.272 [main] ReverseBidCommand - New bid was created LOT: 1; USER: 1; RESULT: false
+[INFO ] 2018-01-07 14:04:44.274 [main] ReverseBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 14:04:44.276 [main] ReverseBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[ERROR] 2018-01-07 14:04:44.664 [main] ActualBalanceService - null
+[INFO ] 2018-01-07 14:04:44.704 [main] AddLotService - New lot created :result
+[ERROR] 2018-01-07 14:04:44.705 [main] AddLotService - null
+[ERROR] 2018-01-07 14:04:44.809 [main] BiddingService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 14:04:44.810 [main] BiddingService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 14:04:44.813 [main] DirectService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 14:04:44.814 [main] DirectService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 14:04:44.882 [main] LoginService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 14:04:44.898 [main] LotEditPageService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 14:04:44.987 [main] LotEditService - nullcom.epam.auction.exceptions.DAOException
+[INFO ] 2018-01-07 14:04:44.988 [main] LotEditService - The state of the lot was changed 1 result
+[ERROR] 2018-01-07 14:04:44.991 [main] LotEditService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 14:04:44.992 [main] LotManageService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 14:04:44.994 [main] LotsService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 14:04:44.999 [main] ReverseService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 14:04:45.000 [main] ReverseService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 14:04:45.016 [main] UserEditPageService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 14:04:45.056 [main] UserEditService - nullcom.epam.auction.exceptions.DAOException
+[INFO ] 2018-01-07 14:04:45.058 [main] UserEditService - User role was changed 1
+[ERROR] 2018-01-07 14:04:45.061 [main] UserEditService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 14:04:45.061 [main] UserManageService - nullcom.epam.auction.exceptions.DAOException
+[INFO ] 2018-01-07 16:11:02.048 [main] DirectBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:11:02.054 [main] DirectBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:11:02.058 [main] DirectBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:11:02.062 [main] DirectBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:11:02.086 [main] ReverseBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:11:02.099 [main] ReverseBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:11:02.102 [main] ReverseBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:11:02.104 [main] ReverseBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[ERROR] 2018-01-07 16:11:02.236 [main] ActualBalanceService - null
+[INFO ] 2018-01-07 16:11:02.309 [main] AddLotService - New lot created :result
+[ERROR] 2018-01-07 16:11:02.310 [main] AddLotService - null
+[ERROR] 2018-01-07 16:11:02.369 [main] BiddingService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:11:02.370 [main] BiddingService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:11:02.374 [main] DirectService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:11:02.375 [main] DirectService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:11:02.431 [main] LoginService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:11:02.447 [main] LotEditPageService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:11:02.512 [main] LotEditService - nullcom.epam.auction.exceptions.DAOException
+[INFO ] 2018-01-07 16:11:02.513 [main] LotEditService - The state of the lot was changed 1 result
+[ERROR] 2018-01-07 16:11:02.514 [main] LotEditService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:11:02.514 [main] LotManageService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:11:02.516 [main] LotsService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:11:02.519 [main] ReverseService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:11:02.519 [main] ReverseService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:11:02.529 [main] UserEditPageService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:11:02.557 [main] UserEditService - nullcom.epam.auction.exceptions.DAOException
+[INFO ] 2018-01-07 16:11:02.559 [main] UserEditService - User role was changed 1
+[ERROR] 2018-01-07 16:11:02.562 [main] UserEditService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:11:02.563 [main] UserManageService - nullcom.epam.auction.exceptions.DAOException
+[INFO ] 2018-01-07 16:16:17.305 [main] DirectBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:16:17.309 [main] DirectBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:16:17.311 [main] DirectBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:16:17.312 [main] DirectBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:16:17.335 [main] ReverseBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:16:17.338 [main] ReverseBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:16:17.339 [main] ReverseBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:16:17.340 [main] ReverseBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[ERROR] 2018-01-07 16:16:17.474 [main] ActualBalanceService - null
+[INFO ] 2018-01-07 16:16:17.548 [main] AddLotService - New lot created :result
+[ERROR] 2018-01-07 16:16:17.549 [main] AddLotService - null
+[ERROR] 2018-01-07 16:16:17.665 [main] BiddingService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:16:17.666 [main] BiddingService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:16:17.670 [main] DirectService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:16:17.671 [main] DirectService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:16:17.738 [main] LoginService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:16:17.767 [main] LotEditPageService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:16:17.844 [main] LotEditService - nullcom.epam.auction.exceptions.DAOException
+[INFO ] 2018-01-07 16:16:17.844 [main] LotEditService - The state of the lot was changed 1 result
+[ERROR] 2018-01-07 16:16:17.845 [main] LotEditService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:16:17.846 [main] LotManageService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:16:17.847 [main] LotsService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:16:17.856 [main] ReverseService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:16:17.857 [main] ReverseService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:16:17.866 [main] UserEditPageService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:16:17.910 [main] UserEditService - nullcom.epam.auction.exceptions.DAOException
+[INFO ] 2018-01-07 16:16:17.913 [main] UserEditService - User role was changed 1
+[ERROR] 2018-01-07 16:16:17.915 [main] UserEditService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:16:17.915 [main] UserManageService - nullcom.epam.auction.exceptions.DAOException
+[INFO ] 2018-01-07 16:17:16.428 [main] DirectBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:17:16.433 [main] DirectBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:17:16.435 [main] DirectBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:17:16.438 [main] DirectBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:17:16.470 [main] ReverseBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:17:16.482 [main] ReverseBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:17:16.486 [main] ReverseBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[INFO ] 2018-01-07 16:17:16.491 [main] ReverseBidCommand - New bid was created LOT: 1; USER: 1; RESULT: true
+[ERROR] 2018-01-07 16:17:16.707 [main] ActualBalanceService - null
+[INFO ] 2018-01-07 16:17:16.754 [main] AddLotService - New lot created :result
+[ERROR] 2018-01-07 16:17:16.754 [main] AddLotService - null
+[ERROR] 2018-01-07 16:17:16.816 [main] BiddingService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:17:16.817 [main] BiddingService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:17:16.821 [main] DirectService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:17:16.821 [main] DirectService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:17:16.873 [main] LoginService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:17:16.886 [main] LotEditPageService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:17:16.985 [main] LotEditService - nullcom.epam.auction.exceptions.DAOException
+[INFO ] 2018-01-07 16:17:16.986 [main] LotEditService - The state of the lot was changed 1 result
+[ERROR] 2018-01-07 16:17:16.987 [main] LotEditService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:17:16.988 [main] LotManageService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:17:16.990 [main] LotsService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:17:16.994 [main] ReverseService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:17:16.995 [main] ReverseService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:17:17.013 [main] UserEditPageService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:17:17.047 [main] UserEditService - nullcom.epam.auction.exceptions.DAOException
+[INFO ] 2018-01-07 16:17:17.049 [main] UserEditService - User role was changed 1
+[ERROR] 2018-01-07 16:17:17.051 [main] UserEditService - nullcom.epam.auction.exceptions.DAOException
+[ERROR] 2018-01-07 16:17:17.051 [main] UserManageService - nullcom.epam.auction.exceptions.DAOException
+[INFO ] 2018-01-07 16:51:45.090 [main] RegistrationService - New user registration :result result result
+[ERROR] 2018-01-07 16:54:46.187 [main] RegistrationService - nullcom.epam.auction.exceptions.DAOException
+[INFO ] 2018-01-07 16:54:46.192 [main] RegistrationService - New user registration :result result result
+[INFO ] 2018-01-07 16:54:46.193 [main] RegistrationService - New user registration :result result result
+[INFO ] 2018-01-07 17:08:19.726 [main] LotDeleteService - Lot was deleted 1
+[INFO ] 2018-01-07 17:13:38.337 [main] LotDeleteService - Lot was deleted 1
+[INFO ] 2018-01-07 17:13:38.347 [main] LotDeleteService - Lot was deleted 1
+[ERROR] 2018-01-07 17:13:38.352 [main] LotDeleteService - nullcom.epam.auction.exceptions.DAOException
+[INFO ] 2018-01-07 17:15:35.514 [main] LotDeleteService - Lot was deleted 1
+[INFO ] 2018-01-07 17:15:35.523 [main] LotDeleteService - Lot was deleted 1
+[ERROR] 2018-01-07 17:15:35.525 [main] LotDeleteService - nullcom.epam.auction.exceptions.DAOException
+[INFO ] 2018-01-07 17:16:29.130 [main] LotDeleteService - Lot was deleted 1
+[INFO ] 2018-01-07 17:16:29.137 [main] LotDeleteService - Lot was deleted 1
+[ERROR] 2018-01-07 17:16:29.139 [main] LotDeleteService - nullcom.epam.auction.exceptions.DAOException

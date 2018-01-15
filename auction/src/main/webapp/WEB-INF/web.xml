@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation=
+                 "http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="WebApp_ID" version="3.0">
+  <display-name> FirstJspServletJsp </display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/jsp/error/error_not_found.jsp</location>
+  </error-page>
+  <error-page>
+    <exception-type>java.lang.RuntimeException</exception-type>
+    <location>/jsp/error/errorpage.jsp</location>
+  </error-page>
+    <error-page>
+        <exception-type>com.epam.auction.exceptions.AuctionException</exception-type>
+        <location>/jsp/error/errorpage.jsp</location>
+    </error-page>
+  <description>MySQL</description>
+  <resource-ref>
+    <description>MySQL DB Connection Pool</description>
+    <res-ref-name>jdbc/connectionPool</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+
+  <servlet>
+    <servlet-name>Direct</servlet-name>
+    <jsp-file>/jsp/customer/direct.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Direct</servlet-name>
+    <url-pattern>/direct_auction</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Reverse</servlet-name>
+    <jsp-file>/jsp/customer/reverse.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Reverse</servlet-name>
+    <url-pattern>/reverse_auction</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>AddLot</servlet-name>
+    <jsp-file>/jsp/customer/addlot.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddLot</servlet-name>
+    <url-pattern>/add_lot</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Bidding</servlet-name>
+    <jsp-file>/jsp/customer/bidding.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Bidding</servlet-name>
+    <url-pattern>/bidding</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Lots</servlet-name>
+    <jsp-file>/jsp/customer/lots.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Lots</servlet-name>
+    <url-pattern>/lots</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>EditLot</servlet-name>
+    <jsp-file>/jsp/admin/lot_edit.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditLot</servlet-name>
+    <url-pattern>/lot_edit</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ManageLot</servlet-name>
+    <jsp-file>/jsp/admin/lot_manage.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManageLot</servlet-name>
+    <url-pattern>/lot_manage</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>UserEdit</servlet-name>
+    <jsp-file>/jsp/admin/user_edit.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserEdit</servlet-name>
+    <url-pattern>/user_edit</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>UserManage</servlet-name>
+    <jsp-file>/jsp/admin/user_manage.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserManage</servlet-name>
+    <url-pattern>/user_manage</url-pattern>
+  </servlet-mapping>
+
+  <filter>
+    <filter-name>encodingfilter</filter-name>
+    <filter-class>com.epam.auction.controller.filter.EncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>encodingfilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+    <filter>
+        <filter-name>AuthorizedFilter</filter-name>
+        <filter-class>com.epam.auction.controller.filter.AuthorizedFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthorizedFilter</filter-name>
+        <servlet-name>Direct</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthorizedFilter</filter-name>
+        <servlet-name>Reverse</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthorizedFilter</filter-name>
+        <servlet-name>AddLot</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthorizedFilter</filter-name>
+        <servlet-name>Lots</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthorizedFilter</filter-name>
+        <servlet-name>ManageLot</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthorizedFilter</filter-name>
+        <servlet-name>EditLot</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthorizedFilter</filter-name>
+        <servlet-name>Bidding</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthorizedFilter</filter-name>
+        <servlet-name>UserManage</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthorizedFilter</filter-name>
+        <servlet-name>UserEdit</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthorizedFilter</filter-name>
+        <url-pattern>/jsp/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>CustomerFilter</filter-name>
+        <filter-class>com.epam.auction.controller.filter.CustomerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CustomerFilter</filter-name>
+        <servlet-name>EditLot</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>CustomerFilter</filter-name>
+        <servlet-name>ManageLot</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>CustomerFilter</filter-name>
+        <servlet-name>UserManage</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>CustomerFilter</filter-name>
+        <servlet-name>UserEdit</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>CustomerFilter</filter-name>
+        <url-pattern>/jsp/admin/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>com.epam.auction.controller.filter.AdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <servlet-name>AddLot</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <servlet-name>Bidding</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <servlet-name>Direct</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <servlet-name>Lots</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <servlet-name>Reverse</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/jsp/customer/*</url-pattern>
+    </filter-mapping>
+
+    <jsp-config>
+        <taglib>
+            <taglib-uri>timeTag</taglib-uri>
+            <taglib-location>/WEB-INF/timeTag.tld</taglib-location>
+        </taglib>
+    </jsp-config>
+</web-app>
