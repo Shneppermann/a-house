@@ -244,7 +244,7 @@ public enum CommandEnum {
             this.command = new DeleteLotCommand(deleteService,manageService,creator);
         }
     };
-    private ActionCommand command;
+    protected ActionCommand command;
     public ActionCommand getCurrentCommand() {
         return command;
     }
