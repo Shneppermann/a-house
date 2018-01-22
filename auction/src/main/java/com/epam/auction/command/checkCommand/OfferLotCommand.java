@@ -6,6 +6,8 @@ import com.epam.auction.exceptions.CommandException;
 import com.epam.auction.exceptions.LogicException;
 import com.epam.auction.service.AddLotService;
 import com.epam.auction.resource.ConfigurationManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,6 +19,7 @@ import javax.servlet.http.HttpSession;
 public class OfferLotCommand extends BaseCheckCommand {
 
     private static final String ERROR_STRING = "Error! Lot not added";
+    private static final Logger LOGGER = LogManager.getLogger(OfferLotCommand.class);
 
     private AddLotService service;
 
@@ -25,9 +28,9 @@ public class OfferLotCommand extends BaseCheckCommand {
     }
 
     /**
-     *
      * The method takes and checks all of the needed parameters. Then it tries to add
      * a new lot using {@link AddLotService}.
+     *
      * @param request from client
      * @return page name
      * @throws CommandException when any {@link LogicException} occurred,
@@ -53,9 +56,11 @@ public class OfferLotCommand extends BaseCheckCommand {
             try {
                 isCreate = service.addLot(userId, lotName, startPrice, step, type);
             } catch (LogicException exception) {
+                LOGGER.error(exception.getMessage(), exception);
                 throw new CommandException(exception.getMessage(), exception);
             }
-            if (!isCreate){
+            if (!isCreate) {
+                LOGGER.error(ERROR_STRING);
                 throw new CommandException(ERROR_STRING);
             }
         }

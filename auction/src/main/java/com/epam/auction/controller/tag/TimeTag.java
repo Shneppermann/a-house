@@ -13,7 +13,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 /**
  * Custom tag that prints a date
  */
-public class TimeTag extends TagSupport{
+public class TimeTag extends TagSupport {
 
     private static final Logger LOGGER = LogManager.getLogger(TimeTag.class);
     private static final long serialVersionUID = 1350593774114515056L;
@@ -31,9 +31,9 @@ public class TimeTag extends TagSupport{
             SimpleDateFormat dateFormatter = new SimpleDateFormat(mFormat);
             out.print(dateFormatter.format(today));
 
-        } catch(IOException exception) {
-            LOGGER.error(exception.getMessage()+exception);
-            throw new JspException(exception.getMessage()+exception);
+        } catch (IOException exception) {
+            LOGGER.error(exception.getMessage() + exception);
+            throw new JspException(exception.getMessage() + exception);
         }
         return EVAL_BODY_INCLUDE;
     }

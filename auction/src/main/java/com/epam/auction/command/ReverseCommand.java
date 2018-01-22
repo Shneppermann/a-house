@@ -9,6 +9,8 @@ import com.epam.auction.resource.ConfigurationManager;
 import com.epam.auction.resource.Info;
 import com.epam.auction.service.ReverseService;
 import com.epam.auction.service.creator.BaseListCreator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,6 +21,8 @@ import java.util.List;
  */
 
 public class ReverseCommand implements ActionCommand {
+
+    private static final Logger LOGGER = LogManager.getLogger(ReverseCommand.class);
 
     private ReverseService service;
     private BaseListCreator<LotDto, Lot> creator;
@@ -41,10 +45,9 @@ public class ReverseCommand implements ActionCommand {
 
         HttpSession session = request.getSession(true);
         User user = (User) session.getAttribute(Info.ATTRIBUTE_USER);
-        session.setAttribute(Info.ATTRIBUTE_NOT_MONEY,null);
+        session.setAttribute(Info.ATTRIBUTE_NOT_MONEY, null);
 
-        String page = null;
-
+        String page;
         try {
             int idUser = user.getId();
             List<Lot> lots = service.getReverseLotList(idUser);
@@ -53,6 +56,7 @@ public class ReverseCommand implements ActionCommand {
             session.setAttribute(Info.ATTRIBUTE_LIST, actualLots);
 
         } catch (LogicException exception) {
+            LOGGER.error(exception.getMessage(), exception);
             throw new CommandException(exception.getMessage(), exception);
         }
         page = ConfigurationManager.getProperty(Info.REVERSE_PAGE);

@@ -9,6 +9,8 @@ import com.epam.auction.resource.ConfigurationManager;
 import com.epam.auction.resource.Info;
 import com.epam.auction.service.LotsService;
 import com.epam.auction.service.creator.BaseListCreator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,11 +21,12 @@ import java.util.List;
  */
 public class LotsCommand implements ActionCommand {
 
+    private static final Logger LOGGER = LogManager.getLogger(LotsCommand.class);
 
     private LotsService service;
-    private BaseListCreator<LotDto,Lot> creator;
+    private BaseListCreator<LotDto, Lot> creator;
 
-    public LotsCommand(LotsService service, BaseListCreator<LotDto,Lot> creator){
+    public LotsCommand(LotsService service, BaseListCreator<LotDto, Lot> creator) {
         this.service = service;
         this.creator = creator;
     }
@@ -36,23 +39,23 @@ public class LotsCommand implements ActionCommand {
      * @throws CommandException when any {@link LogicException} occurred.
      */
     @Override
-    public String execute (HttpServletRequest request)throws CommandException{
+    public String execute(HttpServletRequest request) throws CommandException {
 
         HttpSession session = request.getSession(true);
         User user = (User) session.getAttribute(Info.ATTRIBUTE_USER);
 
-        String page = null;
-
+        String page;
         try {
             int idUser = user.getId();
             List<Lot> lots = service.getSelfLotList(idUser);
             List<LotDto> actualLots = creator.createListDto(lots);
 
-            session.setAttribute(Info.ATTRIBUTE_USER,user);
-            session.setAttribute(Info.ATTRIBUTE_LIST,actualLots);
+            session.setAttribute(Info.ATTRIBUTE_USER, user);
+            session.setAttribute(Info.ATTRIBUTE_LIST, actualLots);
 
-        } catch (LogicException exception){
-            throw new CommandException(exception.getMessage(),exception);
+        } catch (LogicException exception) {
+            LOGGER.error(exception.getMessage(), exception);
+            throw new CommandException(exception.getMessage(), exception);
         }
         page = ConfigurationManager.getProperty(Info.LOTS_PAGE);
         return page;

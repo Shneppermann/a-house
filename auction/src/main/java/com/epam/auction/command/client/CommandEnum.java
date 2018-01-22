@@ -23,30 +23,30 @@ public enum CommandEnum {
             LotDao lotDao = new LotDao();
             UserDao userDao = new UserDao();
             BidDao bidDao = new BidDao();
-            AuctionTypeDao typeDao =new AuctionTypeDao();
+            AuctionTypeDao typeDao = new AuctionTypeDao();
             LotStateDao stateDao = new LotStateDao();
             RoleDao roleDao = new RoleDao();
             UserDtoAssembler userAssembler = new UserDtoAssembler(roleDao);
             UserListCreator userListCreator = new UserListCreator(userAssembler);
-            LotDtoAssembler lotAssembler = new LotDtoAssembler(typeDao,stateDao,bidDao);
+            LotDtoAssembler lotAssembler = new LotDtoAssembler(typeDao, stateDao, bidDao);
             LotsListCreator lotsListCreator = new LotsListCreator(lotAssembler);
-            DirectService directService = new DirectService(lotDao,bidDao);
+            DirectService directService = new DirectService(lotDao, bidDao);
             UserManageService manageService = new UserManageService(userDao);
-            LoginService loginService = new LoginService(userDao,roleDao);
-            this.command = new LoginCommand(directService,manageService, loginService,userListCreator,lotsListCreator);
+            LoginService loginService = new LoginService(userDao, roleDao);
+            this.command = new LoginCommand(directService, manageService, loginService, userListCreator, lotsListCreator);
         }
     },
-    LOGIN_PAGE{
+    LOGIN_PAGE {
         {
             this.command = new LoginPageCommand();
         }
     },
-    REGISTRATION_PAGE{
+    REGISTRATION_PAGE {
         {
             this.command = new RegistrationPageCommand();
         }
     },
-    REGISTRATION{
+    REGISTRATION {
         {
             UserDao userDao = new UserDao();
             RegistrationService service = new RegistrationService(userDao);
@@ -58,193 +58,194 @@ public enum CommandEnum {
             this.command = new LogoutCommand();
         }
     },
-    DIRECT_BID{
+    DIRECT_BID {
         {
             UserDao userDao = new UserDao();
             LotDao lotDao = new LotDao();
             BidDao bidDao = new BidDao();
-            AuctionTypeDao typeDao =new AuctionTypeDao();
+            AuctionTypeDao typeDao = new AuctionTypeDao();
             LotStateDao stateDao = new LotStateDao();
-            DirectService directService = new DirectService(lotDao,bidDao);
-            DirectBiddingService biddingService = new DirectBiddingService(userDao,lotDao,bidDao);
-            LotDtoAssembler assembler = new LotDtoAssembler(typeDao,stateDao,bidDao);
+            DirectService directService = new DirectService(lotDao, bidDao);
+            DirectBiddingService biddingService = new DirectBiddingService(userDao, lotDao, bidDao);
+            LotDtoAssembler assembler = new LotDtoAssembler(typeDao, stateDao, bidDao);
             LotsListCreator creator = new LotsListCreator(assembler);
             ActualBalanceService balanceService = new ActualBalanceService(userDao);
-            this.command = new DirectBidCommand(directService,biddingService,creator,balanceService);
+            this.command = new DirectBidCommand(directService, biddingService, creator, balanceService);
         }
     },
-    REVERSE_BID{
+    REVERSE_BID {
         {
             UserDao userDao = new UserDao();
             LotDao lotDao = new LotDao();
             BidDao bidDao = new BidDao();
-            AuctionTypeDao typeDao =new AuctionTypeDao();
+            AuctionTypeDao typeDao = new AuctionTypeDao();
             LotStateDao stateDao = new LotStateDao();
-            ReverseService reverseService = new ReverseService(lotDao,bidDao);
-            ReverseBiddingService biddingService = new ReverseBiddingService(userDao,lotDao,bidDao);
-            LotDtoAssembler assembler = new LotDtoAssembler(typeDao,stateDao,bidDao);
+            ReverseService reverseService = new ReverseService(lotDao, bidDao);
+            ReverseBiddingService biddingService = new ReverseBiddingService(userDao, lotDao, bidDao);
+            LotDtoAssembler assembler = new LotDtoAssembler(typeDao, stateDao, bidDao);
             LotsListCreator creator = new LotsListCreator(assembler);
             ActualBalanceService balanceService = new ActualBalanceService(userDao);
-            this.command = new ReverseBidCommand(reverseService,biddingService,creator,balanceService);
+            this.command = new ReverseBidCommand(reverseService, biddingService, creator, balanceService);
         }
     },
-    BACK{
+    BACK {
         {
             this.command = new BackCommand();
         }
     },
-    DIRECT{
+    DIRECT {
         {
             LotDao lotDao = new LotDao();
             BidDao bidDao = new BidDao();
-            AuctionTypeDao typeDao =new AuctionTypeDao();
+            AuctionTypeDao typeDao = new AuctionTypeDao();
             LotStateDao stateDao = new LotStateDao();
-            DirectService service = new DirectService(lotDao,bidDao);
-            LotDtoAssembler assembler = new LotDtoAssembler(typeDao,stateDao,bidDao);
+            DirectService service = new DirectService(lotDao, bidDao);
+            LotDtoAssembler assembler = new LotDtoAssembler(typeDao, stateDao, bidDao);
             LotsListCreator creator = new LotsListCreator(assembler);
-            this.command = new DirectCommand(service,creator);
+            this.command = new DirectCommand(service, creator);
         }
 
     },
-    REVERSE{
+    REVERSE {
         {
             LotDao lotDao = new LotDao();
             BidDao bidDao = new BidDao();
-            AuctionTypeDao typeDao =new AuctionTypeDao();
+            AuctionTypeDao typeDao = new AuctionTypeDao();
             LotStateDao stateDao = new LotStateDao();
-            ReverseService service = new ReverseService(lotDao,bidDao);
-            LotDtoAssembler assembler = new LotDtoAssembler(typeDao,stateDao,bidDao);
+            ReverseService service = new ReverseService(lotDao, bidDao);
+            LotDtoAssembler assembler = new LotDtoAssembler(typeDao, stateDao, bidDao);
             LotsListCreator creator = new LotsListCreator(assembler);
-            this.command = new ReverseCommand(service,creator);
+            this.command = new ReverseCommand(service, creator);
         }
     },
-    LOTS{
+    LOTS {
         {
             LotDao lotDao = new LotDao();
             BidDao bidDao = new BidDao();
-            AuctionTypeDao typeDao =new AuctionTypeDao();
+            AuctionTypeDao typeDao = new AuctionTypeDao();
             LotStateDao stateDao = new LotStateDao();
             LotsService service = new LotsService(lotDao);
-            LotDtoAssembler assembler = new LotDtoAssembler(typeDao,stateDao,bidDao);
+            LotDtoAssembler assembler = new LotDtoAssembler(typeDao, stateDao, bidDao);
             LotsListCreator creator = new LotsListCreator(assembler);
-            this.command = new LotsCommand(service,creator);
+            this.command = new LotsCommand(service, creator);
         }
 
     },
-    BIDDING{
+    BIDDING {
         {
             LotDao lotDao = new LotDao();
             BidDao bidDao = new BidDao();
-            AuctionTypeDao typeDao =new AuctionTypeDao();
+            AuctionTypeDao typeDao = new AuctionTypeDao();
             LotStateDao stateDao = new LotStateDao();
-            BiddingService service = new BiddingService(lotDao,bidDao);
-            LotDtoAssembler assembler = new LotDtoAssembler(typeDao,stateDao,bidDao);
+            BiddingService service = new BiddingService(lotDao, bidDao);
+            LotDtoAssembler assembler = new LotDtoAssembler(typeDao, stateDao, bidDao);
             LotsListCreator creator = new LotsListCreator(assembler);
-            this.command= new BiddingCommand(service,creator);
+            this.command = new BiddingCommand(service, creator);
         }
 
     },
-    CHANGELANG{
+    CHANGELANG {
         {
             this.command = new ChangeLangCommand();
         }
 
     },
-    ADD_LOT{
+    ADD_LOT {
         {
             this.command = new AddLotCommand();
         }
     },
-    OFFER_LOT{
+    OFFER_LOT {
         {
             BaseDao<Lot> dao = new LotDao();
             AddLotService service = new AddLotService(dao);
             this.command = new OfferLotCommand(service);
         }
     },
-    USER_MANAGE{
+    USER_MANAGE {
         {
             UserDao userDao = new UserDao();
             RoleDao roleDao = new RoleDao();
             UserManageService service = new UserManageService(userDao);
             UserDtoAssembler assembler = new UserDtoAssembler(roleDao);
             UserListCreator creator = new UserListCreator(assembler);
-            this.command = new UserManageCommand(service,creator);
+            this.command = new UserManageCommand(service, creator);
         }
     },
-    USER_EDIT_PAGE{
+    USER_EDIT_PAGE {
         {
             UserDao userDao = new UserDao();
             RoleDao roleDao = new RoleDao();
             UserDtoAssembler assembler = new UserDtoAssembler(roleDao);
-            UserEditPageService service = new UserEditPageService(userDao,assembler);
+            UserEditPageService service = new UserEditPageService(userDao, assembler);
             this.command = new UserEditPageCommand(service);
         }
     },
-    USER_EDIT{
+    USER_EDIT {
         {
             UserDao userDao = new UserDao();
             RoleDao roleDao = new RoleDao();
-            UserDtoAssembler assembler = new  UserDtoAssembler(roleDao);
-            UserListCreator creator = new  UserListCreator(assembler);
-            UserEditService editService = new UserEditService(userDao,roleDao);
+            UserDtoAssembler assembler = new UserDtoAssembler(roleDao);
+            UserListCreator creator = new UserListCreator(assembler);
+            UserEditService editService = new UserEditService(userDao, roleDao);
             UserManageService manageService = new UserManageService(userDao);
-            this.command = new UserEditCommand(editService,manageService,creator);
+            this.command = new UserEditCommand(editService, manageService, creator);
 
         }
     },
-    LOT_MANAGE{
+    LOT_MANAGE {
         {
             LotDao lotDao = new LotDao();
             BidDao bidDao = new BidDao();
-            AuctionTypeDao typeDao =new AuctionTypeDao();
+            AuctionTypeDao typeDao = new AuctionTypeDao();
             LotStateDao stateDao = new LotStateDao();
             LotManageService service = new LotManageService(lotDao);
-            LotDtoAssembler assembler = new LotDtoAssembler(typeDao,stateDao,bidDao);
+            LotDtoAssembler assembler = new LotDtoAssembler(typeDao, stateDao, bidDao);
             LotsListCreator creator = new LotsListCreator(assembler);
-            this.command = new LotManageCommand(service,creator);
+            this.command = new LotManageCommand(service, creator);
         }
     },
-    LOT_EDIT_PAGE{
+    LOT_EDIT_PAGE {
         {
 
             LotDao lotDao = new LotDao();
             BidDao bidDao = new BidDao();
-            AuctionTypeDao typeDao =new AuctionTypeDao();
+            AuctionTypeDao typeDao = new AuctionTypeDao();
             LotStateDao stateDao = new LotStateDao();
-            LotDtoAssembler assembler = new LotDtoAssembler(typeDao,stateDao,bidDao);
-            LotEditPageService service = new LotEditPageService(lotDao,assembler);
+            LotDtoAssembler assembler = new LotDtoAssembler(typeDao, stateDao, bidDao);
+            LotEditPageService service = new LotEditPageService(lotDao, assembler);
             this.command = new LotEditPageCommand(service);
         }
     },
-    LOT_EDIT{
+    LOT_EDIT {
         {
             LotDao lotDao = new LotDao();
             LotStateDao stateDao = new LotStateDao();
             BidDao bidDao = new BidDao();
-            AuctionTypeDao typeDao =new AuctionTypeDao();
-            LotDtoAssembler assembler = new LotDtoAssembler(typeDao,stateDao,bidDao);
+            AuctionTypeDao typeDao = new AuctionTypeDao();
+            LotDtoAssembler assembler = new LotDtoAssembler(typeDao, stateDao, bidDao);
             LotsListCreator creator = new LotsListCreator(assembler);
-            LotEditService editService = new LotEditService(lotDao,stateDao);
+            LotEditService editService = new LotEditService(lotDao, stateDao);
             LotManageService manageService = new LotManageService(lotDao);
-            this.command = new LotEditCommand(manageService,editService,creator);
+            this.command = new LotEditCommand(manageService, editService, creator);
         }
     },
-    DELETE_LOT{
+    DELETE_LOT {
         {
             LotDao lotDao = new LotDao();
             BidDao bidDao = new BidDao();
             UserDao userDao = new UserDao();
-            AuctionTypeDao typeDao =new AuctionTypeDao();
+            AuctionTypeDao typeDao = new AuctionTypeDao();
             LotStateDao stateDao = new LotStateDao();
-            LotDeleteService deleteService = new LotDeleteService(lotDao,bidDao,userDao);
+            LotDeleteService deleteService = new LotDeleteService(lotDao, bidDao, userDao);
             LotManageService manageService = new LotManageService(lotDao);
-            LotDtoAssembler assembler = new LotDtoAssembler(typeDao,stateDao,bidDao);
+            LotDtoAssembler assembler = new LotDtoAssembler(typeDao, stateDao, bidDao);
             LotsListCreator creator = new LotsListCreator(assembler);
-            this.command = new DeleteLotCommand(deleteService,manageService,creator);
+            this.command = new DeleteLotCommand(deleteService, manageService, creator);
         }
     };
     protected ActionCommand command;
+
     public ActionCommand getCurrentCommand() {
         return command;
     }

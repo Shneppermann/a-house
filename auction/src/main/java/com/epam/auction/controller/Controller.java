@@ -47,7 +47,7 @@ public class Controller extends HttpServlet {
         try {
             page = command.execute(request);
         } catch (AuctionException exception) {
-            LOGGER.error(exception.getMessage() + exception);
+            LOGGER.error(exception.getMessage(), exception);
             page = ConfigurationManager.getProperty(Info.ERROR_PAGE);
             response.sendRedirect(request.getContextPath() + page);
         }

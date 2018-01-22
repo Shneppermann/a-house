@@ -8,6 +8,8 @@ import com.epam.auction.resource.ConfigurationManager;
 import com.epam.auction.resource.Info;
 import com.epam.auction.service.UserManageService;
 import com.epam.auction.service.creator.BaseListCreator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +22,7 @@ import java.util.List;
 
 public class UserManageCommand implements ActionCommand {
 
+    private static final Logger LOGGER = LogManager.getLogger(UserManageCommand.class);
     private UserManageService service;
     private BaseListCreator<UserDto, User> creator;
 
@@ -39,7 +42,7 @@ public class UserManageCommand implements ActionCommand {
     public String execute(HttpServletRequest request) throws CommandException {
 
         HttpSession session = request.getSession(true);
-        String page = null;
+        String page;
         try {
 
             User user = (User) session.getAttribute(Info.ATTRIBUTE_USER);
@@ -51,6 +54,7 @@ public class UserManageCommand implements ActionCommand {
             session.setAttribute(Info.ATTRIBUTE_USER_LIST, usersDto);
 
         } catch (LogicException exception) {
+            LOGGER.error(exception.getMessage(), exception);
             throw new CommandException(exception.getMessage(), exception);
         }
         page = ConfigurationManager.getProperty(Info.USER_MANAGE_PAGE);

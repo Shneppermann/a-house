@@ -5,6 +5,8 @@ import com.epam.auction.exceptions.CommandException;
 import com.epam.auction.exceptions.LogicException;
 import com.epam.auction.resource.ConfigurationManager;
 import com.epam.auction.service.RegistrationService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,9 +18,10 @@ import java.util.ResourceBundle;
  */
 public class RegistrationCommand extends BaseCheckCommand {
 
+    private static final Logger LOGGER = LogManager.getLogger(RegistrationCommand.class);
     private RegistrationService service;
 
-    public RegistrationCommand(RegistrationService service){
+    public RegistrationCommand(RegistrationService service) {
         this.service = service;
     }
 
@@ -31,46 +34,47 @@ public class RegistrationCommand extends BaseCheckCommand {
      * @throws CommandException when {@link LogicException} occurred
      */
     @Override
-    public String execute(HttpServletRequest request)throws CommandException{
+    public String execute(HttpServletRequest request) throws CommandException {
 
         String name = request.getParameter(Info.PARAM_USER_NAME);
         String surname = request.getParameter(Info.PARAM_USER_SURNAME);
         String login = request.getParameter(Info.PARAM_NAME_LOGIN);
         String password = request.getParameter(Info.PARAM_NAME_PASSWORD);
 
-        boolean isCorrectParam = (checkCorrectParameters(name)&&checkCorrectParameters(surname)
-                    && checkCorrectParameters(login)&&checkCorrectParameters(password));
+        boolean isCorrectParam = (checkCorrectParameters(name) && checkCorrectParameters(surname)
+                && checkCorrectParameters(login) && checkCorrectParameters(password));
         String page = null;
-        if(isCorrectParam){
+        if (isCorrectParam) {
             try {
-                boolean isCreate =service.createNewUser(name,surname,login,password);
+                boolean isCreate = service.createNewUser(name, surname, login, password);
 
                 HttpSession session = request.getSession(true);
                 String local = (String) session.getAttribute(Info.LOCAL);
 
                 ResourceBundle bundle;
-                if(local!=null) {
+                if (local != null) {
                     Locale locale = new Locale(local);
                     bundle = ResourceBundle.getBundle(Info.MESS_BUNDLE, locale);
-                } else{
+                } else {
                     Locale locale = Locale.getDefault();
                     bundle = ResourceBundle.getBundle(Info.MESS_BUNDLE, locale);
                 }
 
                 //sets the message to the user and sets the page
 
-                if(isCreate){
+                if (isCreate) {
                     String message = bundle.getString(Info.MESS_REGISTRATION_SUCCESS);
-                    session.setAttribute(Info.ATTRIBUTE_BAN,message);
+                    session.setAttribute(Info.ATTRIBUTE_BAN, message);
                     page = ConfigurationManager.getProperty(Info.LOGIN_PAGE);
                 } else {
                     String message = bundle.getString(Info.MESS_WRONG_LOGIN);
-                    session.setAttribute(Info.ATTRIBUTE_BAN,message);
+                    session.setAttribute(Info.ATTRIBUTE_BAN, message);
                     page = ConfigurationManager.getProperty(Info.REGISTRATION_PAGE);
                 }
 
-            }catch (LogicException exception){
-                throw new CommandException(exception.getMessage(),exception);
+            } catch (LogicException exception) {
+                LOGGER.error(exception.getMessage(), exception);
+                throw new CommandException(exception.getMessage(), exception);
             }
         }
         return page;

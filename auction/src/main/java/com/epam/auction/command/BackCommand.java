@@ -11,10 +11,9 @@ import javax.servlet.http.HttpSession;
 public class BackCommand implements ActionCommand {
 
     @Override
-    public String execute(HttpServletRequest request){
+    public String execute(HttpServletRequest request) {
 
         HttpSession session = request.getSession(true);
-        String page = (String) session.getAttribute(Info.PARAM_REDIRECT_PAGE);
-        return page;
+        return (String) session.getAttribute(Info.PARAM_REDIRECT_PAGE);
     }
 }

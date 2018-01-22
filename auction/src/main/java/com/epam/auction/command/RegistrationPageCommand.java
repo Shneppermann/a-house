@@ -9,10 +9,10 @@ import javax.servlet.http.HttpSession;
 /**
  * Class is responsible for initializing login page.
  */
-public class RegistrationPageCommand implements ActionCommand{
+public class RegistrationPageCommand implements ActionCommand {
 
     @Override
-    public String execute(HttpServletRequest request){
+    public String execute(HttpServletRequest request) {
 
         HttpSession session = request.getSession(false);
         session.invalidate();

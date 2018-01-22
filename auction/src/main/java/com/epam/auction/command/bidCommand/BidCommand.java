@@ -12,6 +12,8 @@ import com.epam.auction.exceptions.LogicException;
 import com.epam.auction.service.ActualBalanceService;
 import com.epam.auction.service.bidding.Bidding;
 import com.epam.auction.service.creator.BaseListCreator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -26,13 +28,14 @@ import java.util.ResourceBundle;
 public abstract class BidCommand implements ActionCommand {
 
 
-    protected  static final String NEW_BID_CREATED = "New bid was created LOT: ";
-    protected  static final String USER ="; USER: ";
-    protected  static final String RESULT = "; RESULT: ";
-
+    protected static final String NEW_BID_CREATED = "New bid was created LOT: ";
+    protected static final String USER = "; USER: ";
+    protected static final String RESULT = "; RESULT: ";
     protected Bidding biddingService;
     protected BaseListCreator<LotDto, Lot> creator;
+
     private ActualBalanceService balanceService;
+    private static final Logger LOGGER = LogManager.getLogger(BidCommand.class);
 
     public BidCommand(Bidding biddingService, BaseListCreator<LotDto, Lot> creator, ActualBalanceService balanceService) {
         this.biddingService = biddingService;
@@ -63,7 +66,7 @@ public abstract class BidCommand implements ActionCommand {
                 lot = biddingService.getBiddingLot(lotId);
 
                 HttpSession session = request.getSession(true);
-                session.setAttribute(Info.ATTRIBUTE_NOT_MONEY,null);
+                session.setAttribute(Info.ATTRIBUTE_NOT_MONEY, null);
 
                 User user = (User) session.getAttribute(Info.ATTRIBUTE_USER);
                 int userId = user.getId();
@@ -73,10 +76,10 @@ public abstract class BidCommand implements ActionCommand {
 
                 if (!isBid) {
                     String local = (String) session.getAttribute(Info.LOCAL);
-                    Locale locale =new Locale(local);
-                    ResourceBundle bundle = ResourceBundle.getBundle(Info.MESS_BUNDLE,locale);
+                    Locale locale = new Locale(local);
+                    ResourceBundle bundle = ResourceBundle.getBundle(Info.MESS_BUNDLE, locale);
                     String message = bundle.getString(Info.MESS_NOT_ENOUGH_MONEY);
-                    session.setAttribute(Info.ATTRIBUTE_NOT_MONEY,message);
+                    session.setAttribute(Info.ATTRIBUTE_NOT_MONEY, message);
                 }
 
                 List<Lot> lots = getLotList(userId);
@@ -88,6 +91,7 @@ public abstract class BidCommand implements ActionCommand {
                 session.setAttribute(Info.ATTRIBUTE_LIST, actualLots);
 
             } catch (LogicException exception) {
+                LOGGER.error(exception.getMessage(), exception);
                 throw new CommandException(exception.getMessage(), exception);
             }
         }

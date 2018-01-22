@@ -8,6 +8,8 @@ import com.epam.auction.resource.ConfigurationManager;
 import com.epam.auction.resource.Info;
 import com.epam.auction.service.LotManageService;
 import com.epam.auction.service.creator.LotsListCreator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,6 +20,8 @@ import java.util.List;
  */
 
 public class LotManageCommand implements ActionCommand {
+
+    private static final Logger LOGGER = LogManager.getLogger(LotManageCommand.class);
 
     private LotManageService manageService;
     private LotsListCreator creator;
@@ -36,13 +40,14 @@ public class LotManageCommand implements ActionCommand {
      */
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
-        String page = null;
+        String page;
         try {
             List<Lot> lots = manageService.getLots();
             List<LotDto> actualLots = creator.createListDto(lots);
             HttpSession session = request.getSession(true);
             session.setAttribute(Info.ATTRIBUTE_LIST, actualLots);
         } catch (LogicException exception) {
+            LOGGER.error(exception.getMessage(), exception);
             throw new CommandException(exception.getMessage(), exception);
         }
         page = ConfigurationManager.getProperty(Info.LOT_MANAGE_PAGE);

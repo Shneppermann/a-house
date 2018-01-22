@@ -10,6 +10,8 @@ import com.epam.auction.resource.Info;
 import com.epam.auction.service.LotEditService;
 import com.epam.auction.service.LotManageService;
 import com.epam.auction.service.creator.LotsListCreator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,6 +23,7 @@ import java.util.List;
 public class LotEditCommand implements ActionCommand {
 
     private static final String ERROR_MESSAGE = "Error! Lot not updated";
+    private static final Logger LOGGER = LogManager.getLogger(LotEditCommand.class);
 
     private LotManageService manageService;
     private LotEditService editService;
@@ -45,16 +48,17 @@ public class LotEditCommand implements ActionCommand {
         String newState = request.getParameter(Info.PARAM_NEW_LOT_STATE);
         HttpSession session = request.getSession(true);
         LotDto actualLot = (LotDto) session.getAttribute(Info.ATTRIBUTE_LOT);
-        String page = null;
+        String page;
         try {
             boolean isChange = editService.changeLot(actualLot, newState);
-            if(!isChange){
+            if (!isChange) {
                 throw new CommandException(ERROR_MESSAGE);
             }
             List<Lot> lots = manageService.getLots();
             List<LotDto> actualLots = creator.createListDto(lots);
             session.setAttribute(Info.ATTRIBUTE_LIST, actualLots);
         } catch (LogicException exception) {
+            LOGGER.error(exception.getMessage(), exception);
             throw new CommandException(exception.getMessage(), exception);
         }
 

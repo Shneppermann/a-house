@@ -12,6 +12,8 @@ import com.epam.auction.service.LoginService;
 import com.epam.auction.resource.ConfigurationManager;
 import com.epam.auction.service.UserManageService;
 import com.epam.auction.service.creator.BaseListCreator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,6 +26,7 @@ import java.util.ResourceBundle;
  */
 public class LoginCommand extends BaseCheckCommand {
 
+    private static final Logger LOGGER = LogManager.getLogger(LoginCommand.class);
     private DirectService directService;
     private UserManageService manageService;
     private LoginService loginService;
@@ -58,7 +61,7 @@ public class LoginCommand extends BaseCheckCommand {
         HttpSession session = request.getSession(true);
 
         String local = request.getParameter(Info.LOCAL);
-        session.setAttribute(Info.LOCAL,local);
+        session.setAttribute(Info.LOCAL, local);
         Locale locale = new Locale(local);
         ResourceBundle bundle = ResourceBundle.getBundle(Info.MESS_BUNDLE, locale);
 
@@ -66,19 +69,20 @@ public class LoginCommand extends BaseCheckCommand {
         if (isCorrectParameter) {
             try {
                 page = getPage(login, password, request);
-                String loginPage =ConfigurationManager.getProperty(Info.LOGIN_PAGE);
+                String loginPage = ConfigurationManager.getProperty(Info.LOGIN_PAGE);
 
-                if(page.equals(loginPage)){
+                if (page.equals(loginPage)) {
                     String message = bundle.getString(Info.MESS_INCORRECT_LOGIN_OR_PASS);
-                    session.setAttribute(Info.ATTRIBUTE_BAN,message);
+                    session.setAttribute(Info.ATTRIBUTE_BAN, message);
                 }
 
             } catch (LogicException exception) {
+                LOGGER.error(exception.getMessage(), exception);
                 throw new CommandException(exception.getMessage(), exception);
             }
         } else {
             String message = bundle.getString(Info.MESS_INCORRECT_LOGIN_OR_PASS);
-            session.setAttribute(Info.ATTRIBUTE_BAN,message);
+            session.setAttribute(Info.ATTRIBUTE_BAN, message);
             page = ConfigurationManager.getProperty(Info.LOGIN_PAGE);
         }
         return page;

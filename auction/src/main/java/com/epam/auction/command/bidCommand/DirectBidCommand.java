@@ -44,9 +44,10 @@ public class DirectBidCommand extends BidCommand {
         boolean isBid = false;
         try {
             isBid = biddingService.doBid(lotId, userId);
-            LOGGER.info(NEW_BID_CREATED+lotId+USER+userId+RESULT+isBid);
+            LOGGER.info(NEW_BID_CREATED + lotId + USER + userId + RESULT + isBid);
 
         } catch (LogicException exception) {
+            LOGGER.error(exception.getMessage(), exception);
             throw new LogicException(exception.getMessage(), exception);
         }
         return isBid;

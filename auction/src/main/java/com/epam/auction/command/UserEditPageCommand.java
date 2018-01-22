@@ -6,6 +6,8 @@ import com.epam.auction.exceptions.LogicException;
 import com.epam.auction.resource.ConfigurationManager;
 import com.epam.auction.resource.Info;
 import com.epam.auction.service.UserEditPageService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,9 +18,10 @@ import javax.servlet.http.HttpSession;
 
 public class UserEditPageCommand implements ActionCommand {
 
+    private static final Logger LOGGER = LogManager.getLogger(UserEditPageCommand.class);
     private UserEditPageService service;
 
-    public UserEditPageCommand(UserEditPageService service){
+    public UserEditPageCommand(UserEditPageService service) {
         this.service = service;
     }
 
@@ -32,22 +35,23 @@ public class UserEditPageCommand implements ActionCommand {
      */
 
     @Override
-    public String execute(HttpServletRequest request)throws CommandException{
+    public String execute(HttpServletRequest request) throws CommandException {
 
         String stringUserId = request.getParameter(Info.PARAM_USER_ID);
         String page;
-        if(stringUserId!=null) {
+        if (stringUserId != null) {
             int userId = Integer.parseInt(stringUserId);
             UserDto user;
             try {
                 user = service.getChangedUser(userId);
             } catch (LogicException exception) {
+                LOGGER.error(exception.getMessage(), exception);
                 throw new CommandException(exception.getMessage(), exception);
             }
             HttpSession session = request.getSession(true);
             session.setAttribute(Info.ATTRIBUTE_EDITED_USER, user);
             page = ConfigurationManager.getProperty(Info.USER_EDIT_PAGE);
-        } else{
+        } else {
             page = ConfigurationManager.getProperty(Info.USER_MANAGE_PAGE);
         }
         return page;

@@ -9,6 +9,8 @@ import com.epam.auction.resource.ConfigurationManager;
 import com.epam.auction.resource.Info;
 import com.epam.auction.service.DirectService;
 import com.epam.auction.service.creator.BaseListCreator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -20,6 +22,7 @@ import java.util.List;
 
 public class DirectCommand implements ActionCommand {
 
+    private static final Logger LOGGER = LogManager.getLogger(DirectCommand.class);
     private DirectService service;
     private BaseListCreator<LotDto, Lot> creator;
 
@@ -40,10 +43,9 @@ public class DirectCommand implements ActionCommand {
 
         HttpSession session = request.getSession(true);
         User user = (User) session.getAttribute(Info.ATTRIBUTE_USER);
-        session.setAttribute(Info.ATTRIBUTE_NOT_MONEY,null);
+        session.setAttribute(Info.ATTRIBUTE_NOT_MONEY, null);
 
-        String page = null;
-
+        String page;
         try {
             int idUser = user.getId();
             List<Lot> lots = service.getDirectLotList(idUser);
@@ -53,6 +55,7 @@ public class DirectCommand implements ActionCommand {
             session.setAttribute(Info.ATTRIBUTE_LIST, actualLots);
 
         } catch (LogicException exception) {
+            LOGGER.error(exception.getMessage(), exception);
             throw new CommandException(exception.getMessage(), exception);
         }
         page = ConfigurationManager.getProperty(Info.DIRECT_PAGE);

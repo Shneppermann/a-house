@@ -9,6 +9,8 @@ import com.epam.auction.resource.ConfigurationManager;
 import com.epam.auction.resource.Info;
 import com.epam.auction.service.BiddingService;
 import com.epam.auction.service.creator.BaseListCreator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +22,8 @@ import java.util.List;
  */
 
 public class BiddingCommand implements ActionCommand {
+
+    private static final Logger LOGGER = LogManager.getLogger(BiddingCommand.class);
 
     private BaseListCreator<LotDto, Lot> creator;
     private BiddingService service;
@@ -41,9 +45,7 @@ public class BiddingCommand implements ActionCommand {
 
         HttpSession session = request.getSession(true);
         User user = (User) session.getAttribute(Info.ATTRIBUTE_USER);
-
-        String page = null;
-
+        String page;
         try {
             int idUser = user.getId();
             List<Lot> lots = service.getSelfBidList(idUser);
@@ -51,9 +53,12 @@ public class BiddingCommand implements ActionCommand {
             List<LotDto> actualLots = creator.createListDto(lots);
             session.setAttribute(Info.ATTRIBUTE_USER, user);
             session.setAttribute(Info.ATTRIBUTE_LIST, actualLots);
+
         } catch (LogicException exception) {
+            LOGGER.error(exception.getMessage(), exception);
             throw new CommandException(exception.getMessage(), exception);
         }
+
         page = ConfigurationManager.getProperty(Info.BIDDING_PAGE);
         return page;
     }

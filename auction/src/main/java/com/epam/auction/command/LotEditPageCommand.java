@@ -6,6 +6,8 @@ import com.epam.auction.exceptions.LogicException;
 import com.epam.auction.resource.ConfigurationManager;
 import com.epam.auction.resource.Info;
 import com.epam.auction.service.LotEditPageService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,6 +17,8 @@ import javax.servlet.http.HttpSession;
  */
 
 public class LotEditPageCommand implements ActionCommand {
+
+    private static final Logger LOGGER = LogManager.getLogger(LotEditPageCommand.class);
 
     private LotEditPageService service;
 
@@ -34,13 +38,14 @@ public class LotEditPageCommand implements ActionCommand {
     public String execute(HttpServletRequest request) throws CommandException {
 
         String stringLotId = request.getParameter(Info.PARAM_LOT_ID);
-        String page = null;
+        String page;
         if (stringLotId != null) {
             int lotId = Integer.parseInt(stringLotId);
             LotDto lot;
             try {
                 lot = service.getChangedLot(lotId);
             } catch (LogicException exception) {
+                LOGGER.error(exception.getMessage(), exception);
                 throw new CommandException(exception.getMessage(), exception);
             }
             HttpSession session = request.getSession(true);

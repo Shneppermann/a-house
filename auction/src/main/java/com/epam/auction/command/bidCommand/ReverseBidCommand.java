@@ -45,8 +45,9 @@ public class ReverseBidCommand extends BidCommand {
         boolean isBid = false;
         try {
             isBid = biddingService.doBid(lotId, userId);
-            LOGGER.info(NEW_BID_CREATED+lotId+USER+userId+RESULT+isBid);
+            LOGGER.info(NEW_BID_CREATED + lotId + USER + userId + RESULT + isBid);
         } catch (Exception exception) {
+            LOGGER.error(exception.getMessage(), exception);
             throw new LogicException(exception.getMessage(), exception);
         }
         return isBid;
