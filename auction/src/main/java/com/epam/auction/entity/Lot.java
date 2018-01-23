@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * Lot entity
  */
-public class Lot extends Entity{
+public class Lot extends Entity {
 
     private static final long serialVersionUID = -7747497940659745497L;
     private int lotState;
@@ -16,7 +16,8 @@ public class Lot extends Entity{
     private BigDecimal step;
     private BigDecimal startPrice;
 
-    public Lot(){}
+    public Lot() {
+    }
 
 
     public Lot(int lotState, int ownerId, int auctionType, String lotName, BigDecimal step, BigDecimal startPrice) {
@@ -78,19 +79,19 @@ public class Lot extends Entity{
 
 
     @Override
-    public Lot clone(){
-       return (Lot) super.clone();
+    public Lot clone() {
+        return (Lot) super.clone();
     }
 
     @Override
     public boolean equals(Object object) {
-        if (this == object){
+        if (this == object) {
             return true;
         }
-        if (object == null || getClass() != object.getClass()){
+        if (object == null || getClass() != object.getClass()) {
             return false;
         }
-        if (!super.equals(object)){
+        if (!super.equals(object)) {
             return false;
         }
         Lot lot = (Lot) object;

@@ -5,6 +5,8 @@ import java.util.Objects;
 
 /**
  * User DTO object
+ * Includes information about user such as login, name, surname, balance.
+ * Includes additional {@link String} field with the user role.
  */
 
 public class UserDto extends AbstractDto {

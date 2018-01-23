@@ -17,7 +17,6 @@ public class RoleCreator extends AbstractEntityCreator<Role> {
     private static final String COLUMN_ROLE_NAME = "role_name";
 
 
-
     @Override
     public Role createElement(ResultSet resultSet) throws SQLException {
 

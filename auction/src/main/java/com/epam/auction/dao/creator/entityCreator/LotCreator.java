@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- *  Creates Lot entity from result set
+ * Creates Lot entity from result set
  */
 public class LotCreator extends AbstractEntityCreator<Lot> {
 

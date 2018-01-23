@@ -16,12 +16,12 @@ public class LotStateDao extends AbstractDaoHelper<LotState> {
      * All needed queries
      */
 
-    private static final String SELECT_ALL_STATES="SELECT `id_state`, `state` FROM `lot_state`;";
+    private static final String SELECT_ALL_STATES = "SELECT `id_state`, `state` FROM `lot_state`;";
     private static final String SELECT_STATE_BY_ID = "SELECT `id_state`, `state` FROM `lot_state` WHERE `id_state`=?;";
     private static final String INSERT_NEW_STATE = "INSERT INTO `lot_state` (`state`) VALUES (?);";
 
-    public LotStateDao(){
-        super(new LotStateStatementCreator(),new LotStateCreator());
+    public LotStateDao() {
+        super(new LotStateStatementCreator(), new LotStateCreator());
     }
 
     @Override
@@ -30,22 +30,22 @@ public class LotStateDao extends AbstractDaoHelper<LotState> {
     }
 
     @Override
-    public LotState findEntityById(Integer id)throws DAOException{
-        return findEntityById(id,SELECT_STATE_BY_ID);
+    public LotState findEntityById(Integer id) throws DAOException {
+        return findEntityById(id, SELECT_STATE_BY_ID);
     }
 
     @Override
-    public  boolean delete (Integer id)throws DAOException{
+    public boolean delete(Integer id) throws DAOException {
         return false;
     }
 
     @Override
-    public  boolean create (LotState entity)throws DAOException{
-        return create(entity,INSERT_NEW_STATE);
+    public boolean create(LotState entity) throws DAOException {
+        return create(entity, INSERT_NEW_STATE);
     }
 
     @Override
-    public LotState update (LotState entity)throws DAOException{
+    public LotState update(LotState entity) throws DAOException {
         return entity;
     }
 

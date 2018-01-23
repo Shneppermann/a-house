@@ -37,8 +37,8 @@ public class LotState extends Entity {
         if (!super.equals(object)) {
             return false;
         }
-        LotState lotState = (LotState) object;
-        return Objects.equals(lotState, lotState.lotState);
+        LotState lotState1 = (LotState) object;
+        return Objects.equals(lotState, lotState1.lotState);
     }
 
     @Override

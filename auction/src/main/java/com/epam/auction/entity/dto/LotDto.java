@@ -6,6 +6,9 @@ import java.util.Objects;
 
 /**
  * Lot DTO object
+ * Includes information about Lot entity such as lot name, lot owner id and step
+ * Includes additional information about high bid id, high bid owner id and the actual bid amount
+ * Also includes the {@link String} fields with lot state name and auction type name
  */
 
 public class LotDto extends AbstractDto {

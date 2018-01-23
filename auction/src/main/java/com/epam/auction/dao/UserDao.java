@@ -17,13 +17,13 @@ public class UserDao extends AbstractDaoHelper<User> {
 
     private static final String SQL_SELECT_ALL_USERS = "SELECT * FROM `user`;";
     private static final String SQL_SELECT_USER_BY_ID = "SELECT * FROM `user` WHERE `id_user` = ?;";
-    private static final String SQL_DELETE_USER_BY_ID ="DELETE FROM `user` WHERE `id_user` =?;";
-    private static final String UPDATE_USER ="UPDATE `auction_db`.`user` SET `id_role`=?, `login`=?, `password`=?, `first_name`=?, `second_name`=?, `balance`=? WHERE `id_user`=?;";
-    private static final String INSERT_NEW_USER ="INSERT INTO `user`  (`id_role`,`login`,`password`,`first_name`,`second_name`,`balance`) VALUES (?,?,SHA(?),?,?,?);";
+    private static final String SQL_DELETE_USER_BY_ID = "DELETE FROM `user` WHERE `id_user` =?;";
+    private static final String UPDATE_USER = "UPDATE `auction_db`.`user` SET `id_role`=?, `login`=?, `password`=?, `first_name`=?, `second_name`=?, `balance`=? WHERE `id_user`=?;";
+    private static final String INSERT_NEW_USER = "INSERT INTO `user`  (`id_role`,`login`,`password`,`first_name`,`second_name`,`balance`) VALUES (?,?,SHA(?),?,?,?);";
 
 
-    public UserDao(){
-        super(new UserStatementCreator(),new UserCreator());
+    public UserDao() {
+        super(new UserStatementCreator(), new UserCreator());
     }
 
     @Override
@@ -32,23 +32,23 @@ public class UserDao extends AbstractDaoHelper<User> {
     }
 
     @Override
-    public User findEntityById(Integer id)throws DAOException{
-        return findEntityById(id,SQL_SELECT_USER_BY_ID);
+    public User findEntityById(Integer id) throws DAOException {
+        return findEntityById(id, SQL_SELECT_USER_BY_ID);
     }
 
     @Override
-    public  boolean delete (Integer id)throws DAOException{
-        return delete(id,SQL_DELETE_USER_BY_ID);
+    public boolean delete(Integer id) throws DAOException {
+        return delete(id, SQL_DELETE_USER_BY_ID);
     }
 
     @Override
-    public  boolean create (User entity)throws DAOException{
-        return create(entity,INSERT_NEW_USER);
+    public boolean create(User entity) throws DAOException {
+        return create(entity, INSERT_NEW_USER);
     }
 
     @Override
-    public User update (User entity)throws DAOException{
-        return update(entity,UPDATE_USER);
+    public User update(User entity) throws DAOException {
+        return update(entity, UPDATE_USER);
     }
 
 }

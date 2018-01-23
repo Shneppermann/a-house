@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Base DAO interface with CRUD operations
+ *
  * @param <T> entity
  */
 public interface BaseDao<T extends Entity> {
@@ -14,9 +15,9 @@ public interface BaseDao<T extends Entity> {
 
     T findEntityById(Integer id) throws DAOException;
 
-    boolean delete(Integer id)throws DAOException;
+    boolean delete(Integer id) throws DAOException;
 
-    boolean create(T entity)throws DAOException;
+    boolean create(T entity) throws DAOException;
 
-    T update(T entity)throws DAOException;
+    T update(T entity) throws DAOException;
 }
