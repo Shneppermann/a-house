@@ -18,7 +18,7 @@ public class ShaStringCreator {
     private static final String SHA = "SHA-1";
     private static final String UTF = "UTF-8";
     private static final String FORMAT = "%02x";
-    private static final String EMPTY_STRING = "";
+
 
     /**
      * Convert simple string into the SHA-1 string
@@ -28,14 +28,14 @@ public class ShaStringCreator {
      * @throws LogicException when any exceptions occurred
      */
     public static String sha(String password) throws LogicException {
-        String sha1 = EMPTY_STRING;
+        String sha1;
         try {
             MessageDigest crypt = MessageDigest.getInstance(SHA);
             crypt.reset();
             crypt.update(password.getBytes(UTF));
             sha1 = byteToHex(crypt.digest());
         } catch (NoSuchAlgorithmException | UnsupportedEncodingException exception) {
-            LOGGER.error(exception.getMessage()+exception);
+            LOGGER.error(exception.getMessage(), exception);
             throw new LogicException(exception.getMessage(), exception);
         }
         return sha1;

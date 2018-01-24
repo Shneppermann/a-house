@@ -47,11 +47,11 @@ public class RegistrationService {
 
             if (isCreate) {
                 isCreate = addNewEntity(name, surname, login, password);
-                LOGGER.info(NEW_REGISTRATION+name+SPACE+surname+SPACE+login);
+                LOGGER.info(NEW_REGISTRATION + name + SPACE + surname + SPACE + login);
             }
 
         } catch (DAOException exception) {
-            LOGGER.error(exception.getMessage()+exception);
+            LOGGER.error(exception.getMessage(), exception);
             throw new LogicException(exception.getMessage(), exception);
         }
 
@@ -88,8 +88,7 @@ public class RegistrationService {
      * @param login    user login
      * @param password user password
      * @return result of the operation
-     * @throws DAOException   when userDao throws DAOException
-     *
+     * @throws DAOException when userDao throws DAOException
      */
     private boolean addNewEntity(String name, String surname, String login, String password) throws DAOException {
 

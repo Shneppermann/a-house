@@ -18,24 +18,25 @@ public class LotsService {
 
     private LotDao lotDao;
 
-    public LotsService(LotDao lotDao){
+    public LotsService(LotDao lotDao) {
         this.lotDao = lotDao;
     }
 
     /**
      * The method tries to return all personal user's lots
+     *
      * @param userId user id
      * @return list of the personal user's lots
      * @throws LogicException when {@link DAOException} occurred
      */
 
-    public List<Lot> getSelfLotList(Integer userId) throws LogicException{
-        List<Lot> result = null;
+    public List<Lot> getSelfLotList(Integer userId) throws LogicException {
+        List<Lot> result;
         try {
             result = lotDao.findAllPersonalLots(userId);
-        }catch (DAOException exception){
-            LOGGER.error(exception.getMessage()+exception);
-            throw new LogicException(exception.getMessage(),exception);
+        } catch (DAOException exception) {
+            LOGGER.error(exception.getMessage(), exception);
+            throw new LogicException(exception.getMessage(), exception);
         }
         return result;
     }

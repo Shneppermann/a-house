@@ -15,14 +15,14 @@ import java.util.List;
 /**
  * The class is responsible for the actual information about the reverse auction's lots
  */
-public class ReverseService {
+public class ReverseService extends CheckService {
 
     private static final Logger LOGGER = LogManager.getLogger(ReverseService.class);
 
     private LotDao lotDao;
     private BidDao bidDao;
 
-    public ReverseService(LotDao lotDao, BidDao bidDao){
+    public ReverseService(LotDao lotDao, BidDao bidDao) {
         this.lotDao = lotDao;
         this.bidDao = bidDao;
     }
@@ -34,7 +34,7 @@ public class ReverseService {
      * @return list of all available reverse auction lots
      * @throws LogicException when {@link DAOException} occurred
      */
-    public List<Lot> getReverseLotList(Integer userId) throws LogicException{
+    public List<Lot> getReverseLotList(Integer userId) throws LogicException {
 
         List<Lot> resultLots = new ArrayList<>();
         try {
@@ -44,50 +44,19 @@ public class ReverseService {
 
                 Bid bid = bidDao.findMinBidByLotId(lotId);
 
-                boolean isNotPersonalLot = checkLot(lot,userId);
-                boolean isNotMinBid = checkBid(bid,userId);
+                boolean isNotPersonalLot = checkLot(lot, userId);
+                boolean isNotMinBid = checkBid(bid, userId);
 
-                if(isNotPersonalLot&&isNotMinBid){
+                if (isNotPersonalLot && isNotMinBid) {
                     resultLots.add(lot);
                 }
 
             }
         } catch (DAOException exception) {
-            LOGGER.error(exception.getMessage()+exception);
-            throw new LogicException(exception.getMessage(),exception);
+            LOGGER.error(exception.getMessage(), exception);
+            throw new LogicException(exception.getMessage(), exception);
         }
         return resultLots;
     }
 
-    /**
-     * Checks owner of the lot
-     *
-     * @param lot    checked lot
-     * @param userId client id
-     * @return result of the check
-     */
-    private boolean checkLot(Lot lot, Integer userId){
-        int userLotId = lot.getOwnerId();
-        return (userId!=userLotId);
-    }
-
-    /**
-     * Checks minimum bid of the lot
-     *
-     * @param bid    minimum bid
-     * @param userId client id
-     * @return result of the check
-     */
-    private boolean checkBid(Bid bid, Integer userId){
-        boolean isChecked = false;
-        if(bid != null){
-            int bidOwnerId = bid.getOwnerId();
-            if(userId!=bidOwnerId){
-                isChecked = true;
-            }
-        } else {
-            isChecked = true;
-        }
-        return isChecked;
-    }
 }

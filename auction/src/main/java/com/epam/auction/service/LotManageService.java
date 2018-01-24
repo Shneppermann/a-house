@@ -7,7 +7,6 @@ import com.epam.auction.exceptions.LogicException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,12 +28,12 @@ public class LotManageService {
      * @throws LogicException when {@link DAOException} occurred
      */
     public List<Lot> getLots() throws LogicException {
-        List<Lot> lots = new ArrayList<>();
+        List<Lot> lots;
         try {
             lots = lotDao.findAll();
 
         } catch (DAOException exception) {
-            LOGGER.error(exception.getMessage()+exception);
+            LOGGER.error(exception.getMessage(), exception);
             throw new LogicException(exception.getMessage(), exception);
         }
         return lots;

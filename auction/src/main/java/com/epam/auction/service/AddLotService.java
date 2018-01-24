@@ -42,12 +42,13 @@ public class AddLotService {
 
     public boolean addLot(int userId, String lotName, String startPrice, String step, String type) throws LogicException {
 
-        BigDecimal decStep = null;
-        BigDecimal decPrice = null;
+        BigDecimal decStep;
+        BigDecimal decPrice;
         try {
             decStep = new BigDecimal(step);
             decPrice = new BigDecimal(startPrice);
         } catch (NumberFormatException exception) {
+            LOGGER.error(exception.getMessage(), exception);
             throw new LogicException(exception.getMessage(), exception);
         }
         int lotAuctionType = getType(type);
@@ -58,7 +59,7 @@ public class AddLotService {
             isCreate = dao.create(newLot);
             LOGGER.info(NEW_LOT+lotName);
         } catch (DAOException exception) {
-            LOGGER.error(exception.getMessage());
+            LOGGER.error(exception.getMessage(), exception);
             throw new LogicException(exception.getMessage(), exception);
         }
         return isCreate;

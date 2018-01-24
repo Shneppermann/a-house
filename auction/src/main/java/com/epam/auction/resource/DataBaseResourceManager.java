@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 public class DataBaseResourceManager {
 
     private static final DataBaseResourceManager instance = new DataBaseResourceManager();
-    private final static String RESOURCE ="dataBase";
+    private final static String RESOURCE = "dataBase";
     private final static ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(RESOURCE);
 
     public static DataBaseResourceManager getInstance() {
@@ -17,7 +17,8 @@ public class DataBaseResourceManager {
 
     /**
      * Returns value from resource bundle "dataBase"
-     * @param key  of the string
+     *
+     * @param key of the string
      * @return string
      */
     public static String getValue(String key) {

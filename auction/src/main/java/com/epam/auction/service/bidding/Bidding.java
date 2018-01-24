@@ -45,6 +45,7 @@ public abstract class Bidding {
         try {
             BigDecimal userBalance = getBalance(userId);
             Bid actualBid = getBid(lotId);
+
             if (actualBid != null) {
                 isEnoughMoney = checkBalanceMaxBid(userBalance, actualBid);
             } else {
@@ -52,6 +53,7 @@ public abstract class Bidding {
                 BigDecimal startPrice = lot.getStartPrice();
                 isEnoughMoney = checkBalanceStartPrice(userBalance, startPrice);
             }
+
             if (isEnoughMoney && actualBid != null) {
                 returnActualBid(actualBid);
                 BigDecimal createdBid = createBid(lotId, userId, actualBid);
@@ -60,6 +62,7 @@ public abstract class Bidding {
                 BigDecimal createdBid = createBid(lotId, userId);
                 updateBalance(userId, createdBid);
             }
+
         } catch (DAOException exception) {
             throw new LogicException(exception.getMessage(), exception);
         }

@@ -31,11 +31,11 @@ public class LotEditPageService {
      * @throws LogicException when DAOException catches
      */
     public LotDto getChangedLot(int idLot) throws LogicException {
-        Lot lot = new Lot();
+        Lot lot;
         try {
             lot = lotDao.findEntityById(idLot);
         } catch (DAOException exception) {
-            LOGGER.error(exception.getMessage()+exception);
+            LOGGER.error(exception.getMessage(), exception);
             throw new LogicException(exception.getMessage(), exception);
         }
         return assembler.createObjectDTO(lot);

@@ -95,14 +95,15 @@ public class LotDtoAssembler extends AbstractAssembler<Lot, LotDto> {
 
     /**
      * Returns actual bid
+     *
      * @param lot lot id
      * @return actual bid
-     * @throws DAOException
+     * @throws DAOException when it occurred
      */
     private Bid getActualBid(Lot lot) throws DAOException {
         int lotAuctionType = lot.getAuctionType();
         int lotId = lot.getId();
-        Bid actualBid = null;
+        Bid actualBid;
         if (lotAuctionType == DIRECT_TYPE) {
             actualBid = getMaxBid(lotId);
         } else {
@@ -113,9 +114,10 @@ public class LotDtoAssembler extends AbstractAssembler<Lot, LotDto> {
 
     /**
      * Returns maximum bid
+     *
      * @param lotId lot id
      * @return maximum bid
-     * @throws DAOException
+     * @throws DAOException when it occurred
      */
     private Bid getMaxBid(int lotId) throws DAOException {
         return bidDao.findMaxBidByLotId(lotId);
@@ -123,9 +125,10 @@ public class LotDtoAssembler extends AbstractAssembler<Lot, LotDto> {
 
     /**
      * Returns minimum bid
+     *
      * @param lotId lot id
      * @return minimum bid
-     * @throws DAOException
+     * @throws DAOException when it occurred
      */
     private Bid getMinBid(int lotId) throws DAOException {
         return bidDao.findMinBidByLotId(lotId);

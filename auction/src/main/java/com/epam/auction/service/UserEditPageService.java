@@ -27,16 +27,16 @@ public class UserEditPageService {
     /**
      * Finds User entity by ID and creates UserDto object
      *
-     * @param  userId user id
+     * @param userId user id
      * @return {@link UserDto} object
      * @throws LogicException when {@link DAOException} occurred
      */
     public UserDto getChangedUser(int userId) throws LogicException {
-        User user = new User();
+        User user;
         try {
             user = userDao.findEntityById(userId);
         } catch (DAOException exception) {
-            LOGGER.error(exception.getMessage()+exception);
+            LOGGER.error(exception.getMessage(), exception);
             throw new LogicException(exception.getMessage(), exception);
         }
         return assembler.createObjectDTO(user);

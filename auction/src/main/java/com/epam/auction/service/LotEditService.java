@@ -18,8 +18,8 @@ import java.util.List;
 public class LotEditService {
 
     private static final Logger LOGGER = LogManager.getLogger(LotEditService.class);
-    private static final String STATE_CHANGE ="The state of the lot was changed ";
-    private static final String SPACE =" ";
+    private static final String STATE_CHANGE = "The state of the lot was changed ";
+    private static final String SPACE = " ";
     private static final int EMPTY_STATE = 0;
     private LotDao lotDao;
     private LotStateDao stateDao;
@@ -48,11 +48,11 @@ public class LotEditService {
                 lot = lotDao.update(lot);
                 if (lot != null) {
                     isChanged = true;
-                    LOGGER.info(STATE_CHANGE+lotId +SPACE+newState);
+                    LOGGER.info(STATE_CHANGE + lotId + SPACE + newState);
                 }
             }
         } catch (DAOException exception) {
-            LOGGER.error(exception.getMessage()+exception);
+            LOGGER.error(exception.getMessage(), exception);
             throw new LogicException(exception.getMessage(), exception);
         }
         return isChanged;

@@ -20,7 +20,7 @@ import java.util.List;
 public class LotDeleteService {
 
     private static final Logger LOGGER = LogManager.getLogger(LotDeleteService.class);
-    private static final String LOT_DELETED ="Lot was deleted ";
+    private static final String LOT_DELETED = "Lot was deleted ";
     private static final int EMPTY_OWNER_ID = 0;
     private static final String RETURN_ERROR_MESSAGE = "Error! Can't return bid";
     private static final String DELETE_BIDS_ERROR_MESSAGE = "Error! Can't delete bids";
@@ -58,16 +58,16 @@ public class LotDeleteService {
                 if (!isDeleteBids) {
                     throw new LogicException(DELETE_BIDS_ERROR_MESSAGE);
                 }
-            } catch (DAOException exception){
-                throw new LogicException(exception.getMessage(),exception);
+            } catch (DAOException exception) {
+                throw new LogicException(exception.getMessage(), exception);
             }
         }
         boolean isLotDelete = false;
         try {
             isLotDelete = lotDao.delete(lotId);
-            LOGGER.info(LOT_DELETED +lotId);
+            LOGGER.info(LOT_DELETED + lotId);
         } catch (DAOException exception) {
-            LOGGER.error(exception.getMessage()+exception);
+            LOGGER.error(exception.getMessage(), exception);
             throw new LogicException(exception.getMessage(), exception);
         }
 
@@ -89,7 +89,7 @@ public class LotDeleteService {
         balance = balance.add(bid);
         user.setBalance(balance);
         user = userDao.update(user);
-        return (user!= null);
+        return (user != null);
     }
 
     /**
@@ -103,9 +103,9 @@ public class LotDeleteService {
 
         List<Bid> allBids = bidDao.findAll();
         boolean isDelete = false;
-        for(Bid bid:allBids){
+        for (Bid bid : allBids) {
             int lotBidId = bid.getLotId();
-            if(lotBidId == lotId){
+            if (lotBidId == lotId) {
                 int bidId = bid.getId();
                 isDelete = bidDao.delete(bidId);
             }

@@ -35,7 +35,7 @@ public class ActualBalanceService {
         try {
             user = userDao.findEntityById(userId);
         } catch (DAOException exception) {
-            LOGGER.error(exception.getMessage());
+            LOGGER.error(exception.getMessage(), exception);
             throw new LogicException(exception.getMessage(), exception);
         }
         return user;

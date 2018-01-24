@@ -22,7 +22,7 @@ public class UserManageService {
 
     private UserDao userDao;
 
-    public UserManageService(UserDao userDao){
+    public UserManageService(UserDao userDao) {
         this.userDao = userDao;
     }
 
@@ -34,21 +34,21 @@ public class UserManageService {
      * @throws LogicException when {@link DAOException} occurred
      */
 
-    public List<User> getUserList(int idUser) throws LogicException{
+    public List<User> getUserList(int idUser) throws LogicException {
 
-        List<User> allUserList = null;
+        List<User> allUserList;
         try {
             allUserList = userDao.findAll();
-        } catch (DAOException exception){
-            LOGGER.error(exception.getMessage()+exception);
-            throw new LogicException(exception.getMessage(),exception);
+        } catch (DAOException exception) {
+            LOGGER.error(exception.getMessage(), exception);
+            throw new LogicException(exception.getMessage(), exception);
         }
 
         List<User> resultList = new ArrayList<>();
-        if (allUserList!=null){
-            for (User user: allUserList){
+        if (allUserList != null) {
+            for (User user : allUserList) {
                 int idNextUser = user.getId();
-                if(idUser!=idNextUser){
+                if (idUser != idNextUser) {
                     resultList.add(user);
                 }
             }

@@ -17,14 +17,14 @@ import java.util.List;
  * The class is responsible for the actual information about the direct auction's lots
  */
 
-public class DirectService {
+public class DirectService extends CheckService {
 
     private static final Logger LOGGER = LogManager.getLogger(DirectService.class);
 
     private LotDao lotDao;
     private BidDao bidDao;
 
-    public DirectService(LotDao lotDao,BidDao bidDao) {
+    public DirectService(LotDao lotDao, BidDao bidDao) {
         this.lotDao = lotDao;
         this.bidDao = bidDao;
     }
@@ -57,41 +57,9 @@ public class DirectService {
 
             }
         } catch (DAOException exception) {
-            LOGGER.error(exception.getMessage()+exception);
+            LOGGER.error(exception.getMessage(), exception);
             throw new LogicException(exception.getMessage(), exception);
         }
         return resultLots;
-    }
-
-    /**
-     * Checks owner of the lot
-     *
-     * @param lot    checked lot
-     * @param userId client id
-     * @return result of the check
-     */
-    private boolean checkLot(Lot lot, Integer userId) {
-        int userLotId = lot.getOwnerId();
-        return (userId != userLotId);
-    }
-
-    /**
-     * Checks maximum bid of the lot
-     *
-     * @param bid    maximum bid
-     * @param userId client id
-     * @return result of the check
-     */
-    private boolean checkBid(Bid bid, Integer userId) {
-        boolean isChecked = false;
-        if (bid != null) {
-            int bidOwnerId = bid.getOwnerId();
-            if (userId != bidOwnerId) {
-                isChecked = true;
-            }
-        } else {
-            isChecked = true;
-        }
-        return isChecked;
     }
 }

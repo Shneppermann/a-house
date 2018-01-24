@@ -1,7 +1,5 @@
 package com.epam.auction.service.bidding;
 
-
-
 import com.epam.auction.dao.BidDao;
 import com.epam.auction.dao.LotDao;
 import com.epam.auction.dao.UserDao;
@@ -16,10 +14,10 @@ import java.math.BigDecimal;
  * The class is responsible for bids operation on the direct auction.
  */
 
-public class DirectBiddingService extends Bidding{
+public class DirectBiddingService extends Bidding {
 
-    public DirectBiddingService(UserDao userDAO, LotDao lotDao,BidDao bidDao){
-        super(userDAO,lotDao,bidDao);
+    public DirectBiddingService(UserDao userDAO, LotDao lotDao, BidDao bidDao) {
+        super(userDAO, lotDao, bidDao);
     }
 
     /**
@@ -30,7 +28,7 @@ public class DirectBiddingService extends Bidding{
      * @throws DAOException when {@link DAOException} occurred
      */
     @Override
-    protected Bid getBid(int lotId) throws DAOException{
+    protected Bid getBid(int lotId) throws DAOException {
         return bidDao.findMaxBidByLotId(lotId);
     }
 
@@ -42,7 +40,7 @@ public class DirectBiddingService extends Bidding{
      * @return new actual bid
      */
     @Override
-    protected BigDecimal getNewMaxBid(BigDecimal bid, BigDecimal step){
+    protected BigDecimal getNewMaxBid(BigDecimal bid, BigDecimal step) {
         return bid.add(step);
     }
 
@@ -55,7 +53,7 @@ public class DirectBiddingService extends Bidding{
      * @throws DAOException when {@link DAOException} occurred
      */
     @Override
-    protected BigDecimal createBid(int lotId, int userId)throws DAOException{
+    protected BigDecimal createBid(int lotId, int userId) throws DAOException {
         Lot lot = lotDao.findEntityById(lotId);
         BigDecimal newBid = lot.getStartPrice();
         BigDecimal step = lot.getStep();

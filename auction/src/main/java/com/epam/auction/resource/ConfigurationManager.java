@@ -7,13 +7,15 @@ import java.util.ResourceBundle;
  */
 public class ConfigurationManager {
 
-    private final static String RESOURCE ="Pages";
+    private final static String RESOURCE = "Pages";
     private final static ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(RESOURCE);
 
-    private ConfigurationManager() { }
+    private ConfigurationManager() {
+    }
 
     /**
      * Returns property from resource bundle "Pages"
+     *
      * @param key of the string
      * @return property
      */

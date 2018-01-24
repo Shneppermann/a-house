@@ -38,7 +38,7 @@ public class LoginService {
      * @throws LogicException when {@link DAOException} occurred
      */
     public User getUser(String enteredLogin, String enteredPass) throws LogicException {
-        List<User> users = null;
+        List<User> users;
         User user = null;
         try {
             users = userDao.findAll();
@@ -52,7 +52,7 @@ public class LoginService {
                 }
             }
         } catch (DAOException exception) {
-            LOGGER.error(exception.getMessage()+exception);
+            LOGGER.error(exception.getMessage(), exception);
             throw new LogicException(exception.getMessage(), exception);
         }
         return user;
@@ -69,10 +69,11 @@ public class LoginService {
     public boolean isAdmin(User user) throws LogicException {
 
         int roleId = user.getIdRole();
-        Role role = null;
+        Role role;
         try {
             role = roleDao.findEntityById(roleId);
         } catch (DAOException exception) {
+            LOGGER.error(exception.getMessage(), exception);
             throw new LogicException(exception.getMessage(), exception);
         }
         boolean isAdmin = false;

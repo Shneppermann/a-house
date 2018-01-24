@@ -4,7 +4,7 @@ package com.epam.auction.exceptions;
  * Connection pool exceptions occur in connection pool class
  */
 
-public class ConnectionPoolException extends AuctionException{
+public class ConnectionPoolException extends AuctionException {
 
     private static final long serialVersionUID = -4901022801759566667L;
 

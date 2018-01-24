@@ -8,19 +8,19 @@ public class LogicException extends AuctionException {
 
     private static final long serialVersionUID = 2268792504217342933L;
 
-    public LogicException () {
+    public LogicException() {
         super();
     }
 
-    public LogicException (String message, Throwable cause) {
+    public LogicException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public LogicException (String message) {
+    public LogicException(String message) {
         super(message);
     }
 
-    public LogicException (Throwable cause) {
+    public LogicException(Throwable cause) {
         super(cause);
     }
 }

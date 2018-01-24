@@ -47,7 +47,7 @@ public class BiddingService {
             List<Lot> lots = lotDao.findAll();
             result = getListWithMaxBids(lots, userId);
         } catch (DAOException exception) {
-            LOGGER.error(exception.getMessage()+exception);
+            LOGGER.error(exception.getMessage(), exception);
             throw new LogicException(exception.getMessage(), exception);
         }
         return result;
@@ -90,7 +90,7 @@ public class BiddingService {
     private boolean checkDirect(Lot lot, int userId) throws DAOException {
         int lotId = lot.getId();
         boolean isActualBid = false;
-        Bid actualBid = null;
+        Bid actualBid;
         try {
             actualBid = bidDao.findMaxBidByLotId(lotId);
         } catch (DAOException exception) {
@@ -117,7 +117,7 @@ public class BiddingService {
     private boolean checkReverse(Lot lot, int userId) throws DAOException {
         int lotId = lot.getId();
         boolean isActualBid = false;
-        Bid actualBid = null;
+        Bid actualBid;
         try {
             actualBid = bidDao.findMinBidByLotId(lotId);
         } catch (DAOException exception) {

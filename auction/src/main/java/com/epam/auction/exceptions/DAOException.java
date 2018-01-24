@@ -4,7 +4,7 @@ package com.epam.auction.exceptions;
  * DAO exceptions occur in the DAO classes
  */
 
-public class DAOException extends AuctionException{
+public class DAOException extends AuctionException {
 
     private static final long serialVersionUID = -1952738304421113340L;
 

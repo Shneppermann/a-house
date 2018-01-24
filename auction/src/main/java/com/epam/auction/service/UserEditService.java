@@ -25,7 +25,7 @@ public class UserEditService {
     private UserDao userDao;
     private RoleDao roleDao;
 
-    public UserEditService(UserDao userDao, RoleDao roleDao){
+    public UserEditService(UserDao userDao, RoleDao roleDao) {
         this.userDao = userDao;
         this.roleDao = roleDao;
     }
@@ -39,23 +39,23 @@ public class UserEditService {
      * @throws LogicException when {@link DAOException} occurred
      */
 
-    public boolean changeUserRole(UserDto userDto, String newRoleId) throws LogicException{
+    public boolean changeUserRole(UserDto userDto, String newRoleId) throws LogicException {
         int userId = userDto.getId();
         boolean isChanged = false;
-        try{
+        try {
             User user = userDao.findEntityById(userId);
             int changedUserRole = getUserRoleId(newRoleId);
-            if(changedUserRole!=EMPTY_ROLE) {
+            if (changedUserRole != EMPTY_ROLE) {
                 user.setIdRole(changedUserRole);
                 user = userDao.update(user);
                 if (user != null) {
                     isChanged = true;
-                    LOGGER.info(CHANGE_USER+userId);
+                    LOGGER.info(CHANGE_USER + userId);
                 }
             }
-        }catch (DAOException exception){
-            LOGGER.error(exception.getMessage()+exception);
-            throw new LogicException(exception.getMessage(),exception);
+        } catch (DAOException exception) {
+            LOGGER.error(exception.getMessage(), exception);
+            throw new LogicException(exception.getMessage(), exception);
         }
         return isChanged;
 
@@ -68,19 +68,16 @@ public class UserEditService {
      * @return id of the new user role
      * @throws DAOException when {@link DAOException} occurred
      */
-    private int getUserRoleId(String newRoleId) throws DAOException{
+    private int getUserRoleId(String newRoleId) throws DAOException {
         List<Role> roles = roleDao.findAll();
         int roleId = EMPTY_ROLE;
-        for (Role role:roles){
+        for (Role role : roles) {
             String roleName = role.getRoleName();
-            if(roleName.equals(newRoleId)){
+            if (roleName.equals(newRoleId)) {
                 roleId = role.getId();
             }
         }
         return roleId;
     }
-
-
-
 
 }
