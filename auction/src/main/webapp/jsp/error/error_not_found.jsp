@@ -8,7 +8,7 @@
 <fmt:setLocale value="${sessionScope.local}"/>
 <fmt:setBundle basename="Bundle" var="lang"/>
 <fmt:message bundle="${lang}" key="title.auction" var="title"/>
-<fmt:message bundle="${lang}" key="title.auction"  var="title"/>
+<fmt:message bundle="${lang}" key="title.auction" var="title"/>
 <fmt:message bundle="${lang}" key="footer.auction" var="footer"/>
 <fmt:message bundle="${lang}" key="language.auction" var="language"/>
 <fmt:message bundle="${lang}" key="language.parameter.auction" var="languagePar"/>
@@ -34,9 +34,11 @@
         <h1><c:out value="${title}"/></h1>
     </div>
     <div class="col-3 col-m-3">
-        <form id="changeLanguage" method="post" action="${pageContext.request.contextPath}/controller?command=changeLang">
+        <form id="changeLanguage" method="post"
+              action="${pageContext.request.contextPath}/controller?command=changeLang">
             <input hidden name="contextPath" value="<c:out value="${contextPath}"/>"/>
-            <button class="lang-button" type ="submit" form="changeLanguage" name="local" value="<c:out value="${languagePar}"/>"><c:out value="${language}"/></button>
+            <button class="lang-button" type="submit" form="changeLanguage" name="local"
+                    value="<c:out value="${languagePar}"/>"><c:out value="${language}"/></button>
         </form>
     </div>
 </div>
@@ -45,17 +47,15 @@
         <form name="returnForm" method="POST" action="${pageContext.request.contextPath}/controller?command=back">
             <div class="form">
                 <div class="err">
-                    <c:out value = "${errorNotFoundPage}"/>
+                    <c:out value="${errorNotFoundPage}"/>
                 </div>
                 <div>
-                    <input id = "submit" class="regButton" type="submit" value="<c:out value="${returnButton}"/>"/>
+                    <input id="submit" class="regButton" type="submit" value="<c:out value="${returnButton}"/>"/>
                 </div>
             </div>
         </form>
     </div>
 </div>
-<div class="footer">
-    <p><c:out value="${footer}"/></p>
-</div>
+<%@ include file="/jsp/jspf/footer.jspf" %>
 </body>
 </html>

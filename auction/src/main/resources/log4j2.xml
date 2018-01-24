@@ -4,14 +4,14 @@
     <Appenders>
         <RollingFile name='fileLogger' fileName='auction.log'
                      filePattern='auction-%d{yyyy-MM-dd}.log'>
-            <PatternLayout   pattern='[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n' />
+            <PatternLayout pattern='[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n'/>
             <Policies>
-                <TimeBasedTriggeringPolicy interval='1' modulate='true' />
-                <SizeBasedTriggeringPolicy size='10 MB' />
+                <TimeBasedTriggeringPolicy interval='1' modulate='true'/>
+                <SizeBasedTriggeringPolicy size='10 MB'/>
             </Policies>
         </RollingFile>
         <Console name='console' target='SYSTEM_OUT'>
-            <PatternLayout   pattern='[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n' />
+            <PatternLayout pattern='[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n'/>
         </Console>
     </Appenders>
     <Loggers>

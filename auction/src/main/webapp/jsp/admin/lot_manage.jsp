@@ -34,7 +34,7 @@
 
 <fmt:setBundle basename="Pages" var="config"/>
 <fmt:message bundle="${config}" key="path.page.lotmanage" var="contextPath"/>
-<c:set var= "redirectPage" value="${contextPath}" scope ="session"/>
+<c:set var="redirectPage" value="${contextPath}" scope="session"/>
 
 <html>
 <head>
@@ -49,12 +49,14 @@
 <div class="header col-12 col-m-12">
     <div class="col-9 col-m-9">
         <h1><c:out value="${title}"/></h1>
-        <p> </p>
+        <p></p>
     </div>
     <div class="col-3 col-m-3">
-        <form id="changeLanguage" method="post" action="${pageContext.request.contextPath}/controller?command=changeLang">
+        <form id="changeLanguage" method="post"
+              action="${pageContext.request.contextPath}/controller?command=changeLang">
             <input hidden name="contextPath" value="<c:out value="${contextPath}"/>"/>
-            <button class="lang-button" type ="submit" form="changeLanguage" name="local" value="<c:out value="${languagePar}"/>"><c:out value="${language}"/></button>
+            <button class="lang-button" type="submit" form="changeLanguage" name="local"
+                    value="<c:out value="${languagePar}"/>"><c:out value="${language}"/></button>
         </form>
     </div>
 </div>
@@ -79,8 +81,9 @@
     </div>
 
     <div class="col-9 col-m-9">
-        <h1> <c:out value="${headerLotsManage}"/> </h1>
-        <form id="editLotsForm" method="POST" action="${pageContext.request.contextPath}/controller?command=lot_edit_page">
+        <h1><c:out value="${headerLotsManage}"/></h1>
+        <form id="editLotsForm" method="POST"
+              action="${pageContext.request.contextPath}/controller?command=lot_edit_page">
             <table class="lotTable">
                 <thead>
                 <tr>
@@ -108,7 +111,8 @@
                 <tfoot>
                 <tr class="tfoot">
                     <td class="tfoot" colspan="6">
-                        <button class="col-12 col-m-12" type="submit" form="editLotsForm"><c:out value="${buttonLotEdit}"/></button>
+                        <button class="col-12 col-m-12" type="submit" form="editLotsForm"><c:out
+                                value="${buttonLotEdit}"/></button>
                     </td>
                 </tr>
                 </tfoot>
@@ -133,9 +137,7 @@
         </div>
     </div>
 </div>
-<div class="footer">
-    <p><c:out value="${footer}"/></p>
-</div>
+<%@ include file="/jsp/jspf/footer.jspf" %>
 <script src="/css/auction_bid.js"></script>
 </body>
 </html>

@@ -36,7 +36,7 @@
 
 <fmt:setBundle basename="Pages" var="config"/>
 <fmt:message bundle="${config}" key="path.page.addlot" var="contextPath"/>
-<c:set var= "redirectPage" value="${contextPath}" scope ="session"/>
+<c:set var="redirectPage" value="${contextPath}" scope="session"/>
 
 <html>
 <head>
@@ -54,9 +54,11 @@
         <p><c:out value="${addLots}"/></p>
     </div>
     <div class="col-3 col-m-3">
-        <form id="changeLanguage" method="post" action="${pageContext.request.contextPath}/controller?command=changeLang">
+        <form id="changeLanguage" method="post"
+              action="${pageContext.request.contextPath}/controller?command=changeLang">
             <input hidden name="contextPath" value="<c:out value="${contextPath}"/>"/>
-            <button class="lang-button" type ="submit" form="changeLanguage" name="local" value="<c:out value="${languagePar}"/>"><c:out value="${language}"/></button>
+            <button class="lang-button" type="submit" form="changeLanguage" name="local"
+                    value="<c:out value="${languagePar}"/>"><c:out value="${language}"/></button>
         </form>
     </div>
     <div class="col-3 col-m-3">
@@ -102,19 +104,20 @@
     <div class="col-9 col-m-9">
         <h1><c:out value="${headeraddLots}"/></h1>
         <form id="addForm" method="POST" action="${pageContext.request.contextPath}/controller?command=offer_lot">
-        <table class="bidTable" >
-            <thead>
-            <tr>
-            </tr>
-            </thead>
-            <tbody class="tfoot">
+            <table class="bidTable">
+                <thead>
+                <tr>
+                </tr>
+                </thead>
+                <tbody class="tfoot">
                 <tr class="tfoot">
-                    <td class="tfoot"><label for="lotName"><c:out value="${lotName}"/></label> </td>
+                    <td class="tfoot"><label for="lotName"><c:out value="${lotName}"/></label></td>
                     <td class="tfoot"><input class="addlot" id="lotName" type="text" name="lotName" required/></td>
                 </tr>
                 <tr class="tfoot">
                     <td class="tfoot"><label for="startPrice"><c:out value="${startPrice}"/></label></td>
-                    <td class="tfoot"><input class="addlot" id="startPrice" type="number" name="startPrice" required/></td>
+                    <td class="tfoot"><input class="addlot" id="startPrice" type="number" name="startPrice" required/>
+                    </td>
                 </tr>
                 <tr class="tfoot">
                     <td class="tfoot"><label for="step"><c:out value="${step}"/></label></td>
@@ -124,21 +127,22 @@
                     <td class="tfoot"><label for="auctionType"><c:out value="${auctionType}"/></label></td>
                     <td class="tfoot">
                         <select class="addlot" id="auctionType" name="auctionType">
-                        <option disabled><c:out value="${selectType}"/></option>
-                        <option selected value="direct"><c:out value="${direct}"/></option>
-                        <option value="reverse"><c:out value="${reverse}"/></option>
+                            <option disabled><c:out value="${selectType}"/></option>
+                            <option selected value="direct"><c:out value="${direct}"/></option>
+                            <option value="reverse"><c:out value="${reverse}"/></option>
                         </select>
                     </td>
                 </tr>
-            </tbody>
-            <tfoot>
-            <tr class="tfoot">
-                <td class="tfoot" colspan="3">
-                    <button class="col-12 col-m-12" type="submit" form="addForm"><c:out value="${offerNew}"/></button>
-                </td>
-            </tr>
-            </tfoot>
-        </table>
+                </tbody>
+                <tfoot>
+                <tr class="tfoot">
+                    <td class="tfoot" colspan="3">
+                        <button class="col-12 col-m-12" type="submit" form="addForm"><c:out
+                                value="${offerNew}"/></button>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
         </form>
     </div>
 
@@ -151,10 +155,7 @@
     </div>
 
 </div>
-
-<div class="footer">
-    <p><c:out value="${footer}"/></p>
-</div>
+<%@ include file="/jsp/jspf/footer.jspf" %>
 <script src="/css/auction_bid.js"></script>
 </body>
 </html>

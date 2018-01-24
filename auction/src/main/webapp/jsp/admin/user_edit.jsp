@@ -31,7 +31,7 @@
 
 <fmt:setBundle basename="Pages" var="config"/>
 <fmt:message bundle="${config}" key="path.page.useredit" var="contextPath"/>
-<c:set var= "redirectPage" value="${contextPath}" scope ="session"/>
+<c:set var="redirectPage" value="${contextPath}" scope="session"/>
 
 <html>
 <head>
@@ -46,12 +46,14 @@
 <div class="header col-12 col-m-12">
     <div class="col-9 col-m-9">
         <h1><c:out value="${title}"/></h1>
-        <p> </p>
+        <p></p>
     </div>
     <div class="col-3 col-m-3">
-        <form id="changeLanguage" method="post" action="${pageContext.request.contextPath}/controller?command=changeLang">
+        <form id="changeLanguage" method="post"
+              action="${pageContext.request.contextPath}/controller?command=changeLang">
             <input hidden name="contextPath" value="<c:out value="${contextPath}"/>"/>
-            <button class="lang-button" type ="submit" form="changeLanguage" name="local" value="<c:out value="${languagePar}"/>"><c:out value="${language}"/></button>
+            <button class="lang-button" type="submit" form="changeLanguage" name="local"
+                    value="<c:out value="${languagePar}"/>"><c:out value="${language}"/></button>
         </form>
     </div>
 </div>
@@ -76,7 +78,7 @@
     </div>
 
     <div class="col-9 col-m-9">
-        <h1> <c:out value="${editUserHeader}"/> </h1>
+        <h1><c:out value="${editUserHeader}"/></h1>
         <form id="editUserForm" method="POST" action="${pageContext.request.contextPath}/controller?command=user_edit">
             <table class="userTable">
                 <thead>
@@ -89,25 +91,26 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><c:out value="${userEdit.id}"/></td>
-                        <td><c:out value="${userEdit.login}"/></td>
-                        <td><c:out value="${userEdit.name}"/></td>
-                        <td><c:out value="${userEdit.surname}"/></td>
-                        <td>
-                            <select id="newRole" name="newRole">
-                                <option disabled><c:out value="${editSelectRole}"/></option>
-                                <option value="Admin"><c:out value="${editAdminRole}"/></option>
-                                <option value="Customer"><c:out value="${editCustomerRole}"/></option>
-                                <option value="Banned user"><c:out value="${editBanRole}"/></option>
-                            </select>
-                        </td>
-                    </tr>
+                <tr>
+                    <td><c:out value="${userEdit.id}"/></td>
+                    <td><c:out value="${userEdit.login}"/></td>
+                    <td><c:out value="${userEdit.name}"/></td>
+                    <td><c:out value="${userEdit.surname}"/></td>
+                    <td>
+                        <select id="newRole" name="newRole">
+                            <option disabled><c:out value="${editSelectRole}"/></option>
+                            <option value="Admin"><c:out value="${editAdminRole}"/></option>
+                            <option value="Customer"><c:out value="${editCustomerRole}"/></option>
+                            <option value="Banned user"><c:out value="${editBanRole}"/></option>
+                        </select>
+                    </td>
+                </tr>
                 </tbody>
                 <tfoot>
                 <tr class="tfoot">
                     <td class="tfoot" colspan="5">
-                        <button class="col-12 col-m-12" type="submit" form="editUserForm"><c:out value="${editSubmitRole}"/></button>
+                        <button class="col-12 col-m-12" type="submit" form="editUserForm"><c:out
+                                value="${editSubmitRole}"/></button>
                     </td>
                 </tr>
                 </tfoot>
@@ -115,10 +118,7 @@
         </form>
     </div>
 </div>
-
-<div class="footer">
-    <p><c:out value="${footer}"/></p>
-</div>
+<%@ include file="/jsp/jspf/footer.jspf" %>
 <script src="/css/auction_bid.js"></script>
 </body>
 </html>

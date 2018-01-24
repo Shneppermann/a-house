@@ -8,8 +8,8 @@
 <fmt:setLocale value="${sessionScope.local}"/>
 <fmt:setBundle basename="Bundle" var="lang"/>
 
-<fmt:message bundle="${lang}" key="button.auction"  var="button"/>
-<fmt:message bundle="${lang}" key="title.auction"  var="title"/>
+<fmt:message bundle="${lang}" key="button.auction" var="button"/>
+<fmt:message bundle="${lang}" key="title.auction" var="title"/>
 
 <fmt:message bundle="${lang}" key="welcome.auction" var="welcome"/>
 <fmt:message bundle="${lang}" key="footer.auction" var="footer"/>
@@ -26,7 +26,7 @@
 
 <fmt:setBundle basename="Pages" var="config"/>
 <fmt:message bundle="${config}" key="path.page.startpage" var="contextPath"/>
-<c:set var= "redirectPage" value="${contextPath}" scope ="session"/>
+<c:set var="redirectPage" value="${contextPath}" scope="session"/>
 
 <html>
 <head>
@@ -44,40 +44,40 @@
         <p><c:out value="${welcome}"/></p>
     </div>
     <div class="col-3 col-m-3">
-        <form id="changeLanguage" method="post" action="${pageContext.request.contextPath}/controller?command=changeLang">
+        <form id="changeLanguage" method="post"
+              action="${pageContext.request.contextPath}/controller?command=changeLang">
             <input hidden name="contextPath" value="<c:out value="${contextPath}"/>"/>
-            <button class="lang-button" type ="submit" form="changeLanguage" name="local" value="<c:out value="${languagePar}"/>"><c:out value="${language}"/></button>
+            <button class="lang-button" type="submit" form="changeLanguage" name="local"
+                    value="<c:out value="${languagePar}"/>"><c:out value="${language}"/></button>
         </form>
     </div>
 </div>
 
 <div class="row">
     <div class="col-12 col-m-12">
-            <div class="form">
-                <div>
-                    <h1><c:out value="${infoHeader}"/></h1>
-                    <p><c:out value="${infoParagraph1}"/></p>
-                    <p><c:out value="${infoParagraph2}"/></p>
-                </div>
+        <div class="form">
+            <div>
+                <h1><c:out value="${infoHeader}"/></h1>
+                <p><c:out value="${infoParagraph1}"/></p>
+                <p><c:out value="${infoParagraph2}"/></p>
             </div>
-
+        </div>
     </div>
     <div class="col-4 col-m-4">
         <form name="loginForm" method="POST" action="${pageContext.request.contextPath}/controller?command=login_page">
-            <input id = "loginSubmit" class="regButton" type="submit" value="<c:out value="${loginButton}"/>"/>
+            <input id="loginSubmit" class="regButton" type="submit" value="<c:out value="${loginButton}"/>"/>
         </form>
     </div>
     <div class="col-4 col-m-4">
     </div>
     <div class="col-4 col-m-4">
-        <form name="registrationForm" method="POST" action="${pageContext.request.contextPath}/controller?command=registration_page">
-            <input id = "registrationSubmit" class="regButton" type="submit" value="<c:out value="${registrationButton}"/>"/>
+        <form name="registrationForm" method="POST"
+              action="${pageContext.request.contextPath}/controller?command=registration_page">
+            <input id="registrationSubmit" class="regButton" type="submit"
+                   value="<c:out value="${registrationButton}"/>"/>
         </form>
     </div>
 </div>
-
-<div class="footer">
-    <p><c:out value="${footer}"/></p>
-</div>
+<%@ include file="/jsp/jspf/footer.jspf" %>
 </body>
 </html>
