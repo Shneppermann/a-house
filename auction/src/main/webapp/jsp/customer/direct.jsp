@@ -59,7 +59,7 @@
     <div class="col-3 col-m-3">
         <form id="changeLanguage" method="post"
               action="${pageContext.request.contextPath}/controller?command=changeLang">
-            <input hidden name="contextPath" value="<c:out value="${contextPath}"/>"/>
+            <input hidden="true" name="contextPath" value="<c:out value="${contextPath}"/>"/>
             <button class="lang-button" type="submit" form="changeLanguage" name="local"
                     value="<c:out value="${languagePar}"/>"><c:out value="${language}"/></button>
         </form>
@@ -121,7 +121,7 @@
                         <td onclick="selectFunction(this)"><c:out value="${elem.lotName}"/></td>
                         <td onclick="selectFunction(this)"><c:out value="${elem.step}"/></td>
                         <td onclick="selectFunction(this)"><c:out value="${elem.bid}"/></td>
-                        <td hidden><input id="${elem.lotName}" type="radio" name="bid" value="${elem.id}"/>СТАВКА</td>
+                        <td hidden="true"><input id="${elem.lotName}" type="radio" name="bid" value="${elem.id}"/>СТАВКА</td>
                     </tr>
                 </c:forEach>
                 </tbody>

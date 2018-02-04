@@ -51,7 +51,7 @@
     <div class="col-3 col-m-3">
         <form id="changeLanguage" method="post"
               action="${pageContext.request.contextPath}/controller?command=changeLang">
-            <input hidden name="contextPath" value="<c:out value="${contextPath}"/>"/>
+            <input hidden="true" name="contextPath" value="<c:out value="${contextPath}"/>"/>
             <button class="lang-button" type="submit" form="changeLanguage" name="local"
                     value="<c:out value="${languagePar}"/>"><c:out value="${language}"/></button>
         </form>

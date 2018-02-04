@@ -67,7 +67,7 @@
     <div class="col-3 col-m-3">
         <form id="changeLanguage" method="post"
               action="${pageContext.request.contextPath}/controller?command=changeLang">
-            <input hidden name="contextPath" value="<c:out value="${contextPath}"/>"/>
+            <input hidden="true" name="contextPath" value="<c:out value="${contextPath}"/>"/>
             <button class="lang-button" type="submit" form="changeLanguage" name="local"
                     value="<c:out value="${languagePar}"/>"><c:out value="${language}"/></button>
         </form>
@@ -81,7 +81,7 @@
             <div class="form">
                 <div>
                     <h1><c:out value="${regTitle}"/></h1>
-                    <input hidden type="text" id="local" name="local" value="<c:out value="${localLanguage}"/>"/>
+                    <input hidden="true" type="text" id="local" name="local" value="<c:out value="${localLanguage}"/>"/>
                 </div>
                 <div>
                     <p><c:out value="${regEnterName}"/></p>
